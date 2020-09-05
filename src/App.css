@@ -1,3 +1,6 @@
+:root {
+  --border-radius: 8px;
+}
 h2 {
   margin-bottom: 1rem;
 }
@@ -5,25 +8,25 @@ h2 {
   width: 100vw;
   height: 100vh;
   overflow: auto;
-  background-color: pink;
 }
 .nav {
   display: flex;
   align-items: center;
-  padding: var(--padding);
+  padding: 1rem 1.5rem;
 }
 .nav--bottom {
   --margin: 1rem;
   position: fixed;
-  background-color: red;
+  background-color: rgba(255, 255, 255, 0.932);
   width: calc(100% - var(--margin) * 2);
   bottom: 1rem;
   left: var(--margin);
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.26);
+  border-radius: var(--border-radius);
   z-index: 3;
 }
 .nav--top {
   justify-content: space-between;
-  background-color: purple;
 }
 nav ul {
   display: flex;
@@ -38,18 +41,20 @@ a {
 .nav__link {
   display: grid;
   place-items: center;
-  border: 2px solid;
   opacity: 0.76;
   transform: scale(0.95);
   transition: opacity 0.5s, transform 0.4s;
 }
 .nav__link--active {
-  background-color: green;
   opacity: 1;
   transform: scale(1);
 }
+.nav__link--active .text {
+  margin-top: 0;
+  transform: scale(1);
+}
 .icon {
-  --s: 2rem;
+  --s: 1.6rem;
   width: var(--s);
   height: var(--s);
   background-color: #fff;
@@ -82,9 +87,9 @@ a {
 .page {
   width: 100%;
   height: 100%;
-  background-color: red;
   overflow: auto;
   padding: var(--padding);
+  background-color: hsl(0, 0%, 99%);
 }
 .page--home {
   display: grid;
@@ -102,15 +107,22 @@ a {
   height: max-content;
   background-color: #fff;
   display: grid;
-  gap: 1rem;
+  margin-top: 1rem;
+  gap: 2rem;
 }
 /* START-CARD */
 .card {
   position: relative;
-  background-color: green;
   display: grid;
   height: 30vh;
   overflow: hidden;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
+  border-radius: var(--border-radius);
+  transition: all 500ms;
+}
+.card:hover {
+  transform: scale(1.02);
+  z-index: 2;
 }
 .card::before {
   content: "";
@@ -141,17 +153,24 @@ a {
   outline: none;
   min-width: 4rem;
   min-height: 4rem;
-  background-color: green;
-  border: 2px solid;
   padding: 1rem;
   font-size: 1rem;
   font-family: inherit;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
+  border-radius: var(--border-radius);
 }
 .btn--badge {
   position: absolute;
-  width: 2rem;
-  height: 2rem;
-  background-color: #000;
+  width: 1.5rem;
+  height: 1.5rem;
+  top: 1rem;
+  right: 1rem;
+  min-height: unset;
+  min-width: unset;
+  padding: 0;
+  background-color: transparent;
+  background-image: url(https://img.icons8.com/ios/50/000000/bookmark-ribbon.png);
+  background-size: cover;
 }
 .input-wrapper {
   display: flex;
@@ -172,7 +191,6 @@ a {
   left: 0;
   width: calc(100%);
   height: 50vh;
-  background-color: purple;
   bottom: 7rem;
   overflow: hidden;
   overflow-x: scroll;
@@ -198,8 +216,6 @@ a {
 .list--overflow-y .card {
   width: 80vw;
   height: calc(100% - 3rem);
-  background-color: red;
-  border: 2px solid yellow;
 }
 .list--overflow-y .card:first-child {
   margin-left: 1rem;
