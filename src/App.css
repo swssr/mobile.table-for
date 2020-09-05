@@ -1,0 +1,34 @@
+.nav {
+  display: flex;
+}
+.nav--bottom {
+  --margin: 1rem;
+  position: fixed;
+  background-color: red;
+  width: calc(100% - var(--margin) * 2);
+  bottom: 1rem;
+  left: var(--margin);
+  padding: var(--padding);
+  z-index: 2;
+}
+nav ul {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  list-style: none;
+}
+a {
+  color: #000;
+  text-decoration: none;
+}
+.nav__link {
+  display: grid;
+  place-items: center;
+  border: 2px solid;
+}
+.nav__link .icon {
+  --s: 2rem;
+  width: var(--s);
+  height: var(--s); 
+  background-color: #fff;
+}
