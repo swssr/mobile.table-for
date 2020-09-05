@@ -232,6 +232,7 @@ a {
   list-style: none;
   margin: 5em auto 0;
   transform: scale(0.5);
+  background-color: red;
 }
 .circle-container > * {
   display: block;
@@ -274,16 +275,17 @@ a {
   -webkit-transform: rotate(315deg) translate(10em) rotate(-315deg);
   transform: rotate(315deg) translate(10em) rotate(-315deg);
 }
-.circle-container img {
+.circle-container .seat {
   display: block;
   max-width: 100%;
   border-radius: 50%;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
+  background-color: #000;
   -webkit-transition: 0.15s;
   transition: 0.15s;
+  cursor: pointer;
 }
-.circle-container img:hover {
-  -webkit-filter: grayscale(0);
-  filter: grayscale(0);
+.circle-container:hover .seat:not(:hover) {
+  filter: grayscale(0) brightness(0.8);
+  opacity: 0.1;
+  background-color: rgb(43, 91, 250);
 }

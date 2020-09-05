@@ -31,7 +31,7 @@ export default function Booking() {
           id="seats"
           value={state.seats}
           onChange={(e) =>
-            dispatch({ type: "SET_PERSON", payload: +e.target.value })
+            dispatch({ type: "SET_PERSONS", payload: +e.target.value })
           }
         />
         <button
@@ -43,48 +43,34 @@ export default function Booking() {
       </div>
 
       <div className="table">
-        <div className="circle-container">
-          <ul class="circle-container">
-            <li>
-              <img src="http://lorempixel.com/100/100/city" />
-            </li>
-            <li>
-              <img src="http://lorempixel.com/100/100/nature" />
-            </li>
-            <li>
-              <img src="http://lorempixel.com/100/100/abstract" />
-            </li>
-            <li>
-              <img src="http://lorempixel.com/100/100/cats" />
-            </li>
-            <li>
-              <img src="http://lorempixel.com/100/100/food" />
-            </li>
-            <li>
-              <img src="http://lorempixel.com/100/100/animals" />
-            </li>
-            <li>
-              <img src="http://lorempixel.com/100/100/business" />
-            </li>
-            <li>
-              <img src="http://lorempixel.com/100/100/people" />
-            </li>
-          </ul>
-        </div>
+        <ul class="circle-container">
+          <li className="seat"></li>
+          <li className="seat"></li>
+          <li className="seat"></li>
+          <li className="seat"></li>
+          <li className="seat"></li>
+          <li className="seat"></li>
+          <li className="seat"></li>
+          <li className="seat"></li>
+        </ul>
       </div>
     </div>
   );
 }
+const MAX_SEATS = 8;
+const MIN_SEATS = 0;
 
 function reducer(state, action) {
   switch (action.type) {
     case "ADD_PERSON":
-      if (state.seats + 1 > 6) return;
+      if (state.seats + 1 > MAX_SEATS) return state;
       return { ...state, seats: state.seats + 1 };
     case "REMOVE_PERSON":
-      if (state.seats - 1 < 1) return;
+      if (state.seats - 1 < MIN_SEATS) return state;
       return { ...state, seats: state.seats - 1 };
     case "SET_PERSONS":
+      if (state.seats - 1 < MIN_SEATS || state.seats + 1 > MAX_SEATS)
+        return state;
       return { ...state, seats: +action.payload };
     case "SET_SPECIAL_NOTE":
       return { ...state, specialNote: action.payload };
