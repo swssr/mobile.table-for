@@ -17,8 +17,10 @@ export default function RestaurantDetails() {
       >
         Book a table
       </Link>
-      <p>
-        <h4>Menu</h4>
+      <br />
+      <br />    
+      <details>
+        <summary>Menu</summary>
         <ul>
           <li>
             <h4>Fancy meal 1</h4>
@@ -41,7 +43,7 @@ export default function RestaurantDetails() {
             <p>fancy description</p>
           </li>
         </ul>
-      </p>
+      </details>
     </div>
   );
 }

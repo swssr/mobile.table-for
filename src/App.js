@@ -14,6 +14,8 @@ import Reserved from "./Pages/Reserved";
 import Saved from "./Pages/Saved";
 import NavBottom from "./Components/NavBottom";
 import NavTop from "./Components/NavTop";
+import RestaurantDetails from "./Pages/RestaurantDetails";
+import Booking from "./Pages/Booking";
 
 function App() {
   const location = useLocation();
@@ -33,6 +35,8 @@ function App() {
             <Route path="/nearby" component={Nearby} />
             <Route path="/reserved" component={Reserved} />
             <Route path="/saved" component={Saved} />
+            <Route path="/details" component={RestaurantDetails} />
+            <Route path="/booking" component={Booking} />
             <Route path="/" exact component={Home} />
           </Switch>
         </animated.div>

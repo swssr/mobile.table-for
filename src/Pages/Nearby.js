@@ -17,10 +17,19 @@ export default function Nearby() {
         <SearchForm />
       </NavTop>
       <div className="map">
-        <GoogleMaps
+        {/* <GoogleMaps
           bootstrapURLKeys={{ key: "AIzaSyDNHKQef6oDl_NCAQyBg6-7RT5spD-h_3U" }}
           center={pos}
-        />
+        /> */}
+        <iframe
+          title="map"
+          width="600"
+          height="450"
+          frameborder="0"
+          // style="border:0"
+          src="https://www.google.com/maps/embed/v1/place?q=durban&key=AIzaSyAysy8EdONqEynAfNCBtw3INDkvkEdOLuI"
+          allowfullscreen
+        ></iframe>
       </div>
       <div className="places">
         <h2>Nearby Places</h2>
@@ -46,22 +55,22 @@ function useGeoLocation() {
   });
   const [error, setError] = useState();
 
-  useEffect(() => {
-    return navigator.geolocation.getCurrentPosition(
-      (_pos) =>
-        setPos({
-          lat: _pos.coords.latitude,
-          lng: _pos.coords.longitude,
-          ..._pos,
-        }),
-      (error) => setError(error),
-      {
-        enableHighAccuracy: true,
-        maximumAge: 0,
-        timeout: 10000,
-      }
-    );
-  }, []);
+  // useEffect(() => {
+  //   return navigator.geolocation.getCurrentPosition(
+  //     (_pos) =>
+  //       setPos({
+  //         lat: _pos.coords.latitude,
+  //         lng: _pos.coords.longitude,
+  //         ..._pos,
+  //       }),
+  //     (error) => setError(error),
+  //     {
+  //       enableHighAccuracy: true,
+  //       maximumAge: 0,
+  //       timeout: 10000,
+  //     }
+  //   );
+  // }, []);
 
   return [pos, error];
 }
