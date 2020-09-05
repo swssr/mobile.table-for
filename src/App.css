@@ -231,7 +231,7 @@ a {
   padding: 0;
   list-style: none;
   margin: 5em auto 0;
-  border: solid 5px tomato;
+  transform: scale(0.5);
 }
 .circle-container > * {
   display: block;
@@ -280,7 +280,6 @@ a {
   border-radius: 50%;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
-  border: solid 5px tomato;
   -webkit-transition: 0.15s;
   transition: 0.15s;
 }

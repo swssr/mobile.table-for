@@ -1,14 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { useReducer } from "react";
 
 export default function Booking() {
-  const { state: locState } = useLocation();
-  const [restaurant, setRestaurant] = useEffect(
-    locState.restaurant || "Unkown"
-  );
+  const location = useLocation();
 
-  const [state, dispatch] = useReducer(() => {}, {
+  console.log({ location });
+  const [restaurant, setRestaurant] = useState({});
+
+  const [state, dispatch] = useReducer(reducer, {
     date: new Date(),
     seats: 0,
     specialNote: null,
@@ -21,7 +20,7 @@ export default function Booking() {
 
       <div className="counter">
         <button
-          onClick={(_) => dispatch({ type: "ADD_PERSON" })}
+          onClick={(_) => dispatch({ type: "REMOVE_PERSON" })}
           className="btn btn--icon"
         >
           -
@@ -36,7 +35,7 @@ export default function Booking() {
           }
         />
         <button
-          onClick={(_) => dispatch({ type: "REMOVE_PERSON" })}
+          onClick={(_) => dispatch({ type: "ADD_PERSON" })}
           className="btn btn--icon"
         >
           +
@@ -80,8 +79,10 @@ export default function Booking() {
 function reducer(state, action) {
   switch (action.type) {
     case "ADD_PERSON":
+      if (state.seats + 1 > 6) return;
       return { ...state, seats: state.seats + 1 };
     case "REMOVE_PERSON":
+      if (state.seats - 1 < 1) return;
       return { ...state, seats: state.seats - 1 };
     case "SET_PERSONS":
       return { ...state, seats: +action.payload };
