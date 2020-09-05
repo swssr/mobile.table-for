@@ -3,7 +3,7 @@ import RestaurantCard from "../Components/RestaurantCard";
 import SearchForm from "../Components/SearchForm";
 
 export default function Home() {
-  const restaurants = Array(24);
+  const restaurants = Array(24).fill(null);
   return (
     <div>
       <h1>Hey, Simo!</h1>

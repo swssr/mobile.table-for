@@ -2,7 +2,7 @@ import React from "react";
 import RestaurantCard from "../Components/RestaurantCard";
 
 export default function Reserved() {
-  const restaurant = Array(2);
+  const restaurant = Array(2).fill(null);
   return (
     <div>
       <h1>Reserved ({restaurant.length})</h1>
