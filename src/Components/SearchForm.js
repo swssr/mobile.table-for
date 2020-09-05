@@ -12,9 +12,10 @@ export default function SearchForm() {
         <input
           onChange={(ev) => setQuery(ev.target.value)}
           type="text"
+          className="input"
           placeholder="Search restaurant, cuisine, or location"
         />
-        <button type="submit">
+        <button type="submit" className="btn">
           <span className="icon icon--search"></span>
         </button>
       </div>

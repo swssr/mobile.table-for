@@ -5,7 +5,7 @@ import SearchForm from "../Components/SearchForm";
 export default function Home() {
   const restaurants = Array(24).fill(null);
   return (
-    <div>
+    <div className="page page--home">
       <h1>Hey, Simo!</h1>
       <p>Let's reserve a table for you.</p>
       <SearchForm />
