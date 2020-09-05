@@ -10,7 +10,6 @@ export default function Nearby() {
 
   const [pos, error] = useGeoLocation();
   const restaurants = Array(Math.ceil(2 + Math.random() * 10)).fill(null);
-  console.log(process.env.GOOGLE_MAPS_KEY);
   if (error) alert("Failed to get your geolocation.");
   return (
     <div className="page page--z-mid">
@@ -18,7 +17,10 @@ export default function Nearby() {
         <SearchForm />
       </NavTop>
       <div className="map">
-        <GoogleMaps bootstrapURLKeys={{ key: process.env.GOOGLE_MAPS_KEY }} />
+        <GoogleMaps
+          bootstrapURLKeys={{ key: "AIzaSyDNHKQef6oDl_NCAQyBg6-7RT5spD-h_3U" }}
+          center={pos}
+        />
       </div>
       <div className="places">
         <h2>Nearby Places</h2>
@@ -38,12 +40,20 @@ export default function Nearby() {
 }
 
 function useGeoLocation() {
-  const [pos, setPos] = useState();
+  const [pos, setPos] = useState({
+    lat: -28.530553899999997,
+    lng: 30.895824200000003,
+  });
   const [error, setError] = useState();
 
   useEffect(() => {
     return navigator.geolocation.getCurrentPosition(
-      (_pos) => setPos(_pos),
+      (_pos) =>
+        setPos({
+          lat: _pos.coords.latitude,
+          lng: _pos.coords.longitude,
+          ..._pos,
+        }),
       (error) => setError(error),
       {
         enableHighAccuracy: true,
