@@ -289,3 +289,26 @@ a {
   opacity: 0.1;
   background-color: rgb(43, 91, 250);
 }
+
+.seat--active {
+  background-color: red !important;
+}
+.seat input {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  opacity: 0;
+}
+.seat input:checked + label {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: green;
+  border-radius: 50%;
+  z-index: 2;
+}

@@ -1,6 +1,9 @@
 import React, { useEffect, useReducer, useState } from "react";
 import { useLocation } from "react-router-dom";
 
+const MAX_SEATS = 8;
+const MIN_SEATS = 0;
+
 export default function Booking() {
   const location = useLocation();
 
@@ -12,6 +15,7 @@ export default function Booking() {
     seats: 0,
     specialNote: null,
   });
+  const handleClick = () => {};
   return (
     <div>
       <h1>Book your table</h1>
@@ -44,21 +48,33 @@ export default function Booking() {
 
       <div className="table">
         <ul class="circle-container">
-          <li className="seat"></li>
-          <li className="seat"></li>
-          <li className="seat"></li>
-          <li className="seat"></li>
-          <li className="seat"></li>
-          <li className="seat"></li>
-          <li className="seat"></li>
-          <li className="seat"></li>
+          {Array(MAX_SEATS)
+            .fill(null)
+            .map((_, idx) => (idx < state.seats ? true : false))
+            .map((checked) => (
+              <input
+                type="checkbox"
+                id="seat"
+                className="seat"
+                checked={checked}
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    dispatch({ type: "ADD_PERSON" });
+                  } else {
+                    dispatch({ type: "REMOVE_PERSON" });
+                  }
+                }}
+              />
+            ))}
         </ul>
+
+        <button onClick={handleClick} className="btn btn--primary">
+          Reserve
+        </button>
       </div>
     </div>
   );
 }
-const MAX_SEATS = 8;
-const MIN_SEATS = 0;
 
 function reducer(state, action) {
   switch (action.type) {
