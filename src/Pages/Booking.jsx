@@ -1,6 +1,16 @@
+import Axios from "axios";
 import React, { useReducer, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { BookingReducer, MAX_SEATS } from "../Reducers";
+import { PostData } from "../helpers";
+import {
+	BookingReducer,
+	ADD_PERSON,
+	MAX_SEATS,
+	REMOVE_PERSON,
+	SET_PERSONS,
+	SET_SPECIAL_NOTE,
+	//
+} from "../Reducers";
 
 export default function Booking() {
 	const location = useLocation();
@@ -14,7 +24,10 @@ export default function Booking() {
 		specialNote: null,
 	});
 
-	const handleClick = () => {};
+	const handleClick = async () => {
+		return console.log({ state });
+		await PostData("/booking", state);
+	};
 	return (
 		<div>
 			<h1>Book your table</h1>
@@ -23,7 +36,7 @@ export default function Booking() {
 
 			<div className="counter">
 				<button
-					onClick={() => dispatch({ type: "REMOVE_PERSON" })}
+					onClick={() => dispatch({ type: REMOVE_PERSON })}
 					className="btn btn--icon"
 				>
 					-
@@ -34,11 +47,11 @@ export default function Booking() {
 					id="seats"
 					value={state.seats}
 					onChange={(e) =>
-						dispatch({ type: "SET_PERSONS", payload: +e.target.value })
+						dispatch({ type: SET_PERSONS, payload: +e.target.value })
 					}
 				/>
 				<button
-					onClick={(_) => dispatch({ type: "ADD_PERSON" })}
+					onClick={(_) => dispatch({ type: ADD_PERSON })}
 					className="btn btn--icon"
 				>
 					+
@@ -58,15 +71,24 @@ export default function Booking() {
 								checked={checked}
 								onChange={(e) => {
 									if (e.target.checked) {
-										dispatch({ type: "ADD_PERSON" });
+										dispatch({ type: ADD_PERSON });
 									} else {
-										dispatch({ type: "REMOVE_PERSON" });
+										dispatch({ type: REMOVE_PERSON });
 									}
 								}}
 							/>
 						))}
 				</ul>
-
+				<section>
+					<h3>Special Note</h3>
+					<p>Anyhing you want to know before you come.</p>
+					<textarea
+						onChange={(e) =>
+							dispatch({ type: SET_SPECIAL_NOTE, payload: e.target.value })
+						}
+						placeholder="I like potatoes"
+					></textarea>
+				</section>
 				<button onClick={handleClick} className="btn btn--primary">
 					Reserve
 				</button>
