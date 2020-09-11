@@ -8,7 +8,7 @@ export default function Home() {
 		<div className="page page--home">
 			<h1>Hey, Simo!</h1>
 			<p>Let's reserve a table for you.</p>
-			<SearchForm />
+			<SearchForm restaurants={[]} />
 			<section className="list">
 				{restaurants.map((_, index) => (
 					<RestaurantCard key={index} name={`Restaurant ${index + 1}`} />
