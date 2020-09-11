@@ -12,6 +12,10 @@ h2 {
 	overflow-x: hidden;
 	overflow: auto;
 }
+.animated-wrapper {
+	border: 4px solid;
+	filter: brightness(0.3);
+}
 .nav {
 	display: flex;
 	align-items: center;
