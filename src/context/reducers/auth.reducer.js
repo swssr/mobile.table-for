@@ -1,6 +1,4 @@
-export const REGISTER = "REGISTER";
-export const LOGIN = "LOGIN";
-export const SET_CREDS = "SET_CREDS";
+import { LOGIN, REGISTER, SET_CREDS } from "../../actions/auth.actions";
 
 export function AuthReducer(state, action) {
 	switch (action.type) {
