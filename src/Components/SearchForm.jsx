@@ -7,20 +7,9 @@ export default function SearchForm({ restaurants, ...props }) {
 	const handleSearch = (event) => {
 		event.preventDefault();
 		if (!query) return;
+
 		const options = {
-			// isCaseSensitive: false,
-			// includeScore: false,
-			// shouldSort: true,
-			// includeMatches: false,
-			// findAllMatches: false,
-			// minMatchCharLength: 1,
-			// location: 0,
-			// threshold: 0.6,
-			// distance: 100,
-			// useExtendedSearch: false,
-			// ignoreLocation: false,
-			// ignoreFieldNorm: false,
-			keys: ["name", "cuisine", ""],
+			keys: ["name", "cuisine"],
 		};
 
 		console.log(query, restaurants);
