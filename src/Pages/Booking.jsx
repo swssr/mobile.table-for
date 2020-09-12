@@ -25,8 +25,7 @@ export default function Booking() {
 	});
 
 	const handleClick = async () => {
-		return console.log({ state });
-		await PostData("/booking", state);
+		return await PostData("/booking", state);
 	};
 	return (
 		<div>
