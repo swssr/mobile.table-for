@@ -33,7 +33,10 @@ export default function SearchForm({ restaurants, ...props }) {
 			<div className="input-wrapper">
 				<input
 					onChange={(ev) => setQuery(ev.target.value)}
-					type="text"
+					type="search"
+					autoFocus
+					autoComplete
+					required
 					className="input"
 					placeholder="Search restaurant, cuisine, or location"
 				/>
