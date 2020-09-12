@@ -1,16 +1,17 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { PostData } from "../../helpers";
-import { AuthReducer, SET_CREDS } from "../../context/reducers";
+import { useAuthDispatch, useAuthState } from "../../context";
+
+import { SET_CREDS } from "../../actions/auth.actions";
 
 export default function Login() {
 	const history = useHistory();
 
-	const [state, dispatch] = useReducer(AuthReducer, {
-		email: "",
-		password: "",
-		error: "",
-	});
+	const state = useAuthState();
+	const dispatch = useAuthDispatch();
+
+	const [confirmPassword, setConfirmPassword] = useState();
 
 	const handleChange = (ev) => {
 		dispatch({
@@ -21,14 +22,27 @@ export default function Login() {
 
 	const handleSubmit = (ev) => {
 		ev.preventDefault();
+		if (confirmPassword !== state.password) return alert();
 		return PostData("/auth/register", state)
-			.then((res) => history.push("/login"))
+			.then((res) => {
+				console.log(res);
+			})
 			.catch((err) => console.log(err.message));
 	};
 	return (
 		<div>
 			<h1>Regiser</h1>
 			<form onSubmit={handleSubmit}>
+				<section className="input-wrapper">
+					<label htmlFor="name">Fullname</label>
+					<input
+						name="fullname"
+						type="text"
+						className="input"
+						placeholder="Nice Human"
+						onChange={handleChange}
+					/>
+				</section>
 				<section className="input-wrapper">
 					<label htmlFor="email">Email Address</label>
 					<input
@@ -47,6 +61,15 @@ export default function Login() {
 						className="input"
 						placeholder="Your Email Address"
 						onChange={handleChange}
+					/>
+				</section>
+				<section className="input-wrapper">
+					<label htmlFor="confirm-password">Confirm Password</label>
+					<input
+						name="confirm-password"
+						type="password"
+						className="input"
+						onChange={(e) => setConfirmPassword(e.target.value)}
 					/>
 				</section>
 				<button type="submit">Register</button>

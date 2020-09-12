@@ -1,16 +1,16 @@
 import React, { useReducer } from "react";
 import { Link, useHistory } from "react-router-dom";
+
+import { SET_CREDS } from "../../actions";
+import { useAuthDispatch, useAuthState } from "../../context";
+
 import { PostData } from "../../helpers";
-import { AuthReducer, SET_CREDS } from "../../context/reducers/auth.reducer";
 
 export default function Login() {
 	const history = useHistory();
 
-	const [state, dispatch] = useReducer(AuthReducer, {
-		email: "",
-		password: "",
-		error: "",
-	});
+	const state = useAuthState();
+	const dispatch = useAuthDispatch();
 
 	const handleChange = (ev) => {
 		dispatch({
