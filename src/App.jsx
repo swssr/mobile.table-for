@@ -18,6 +18,7 @@ import RestaurantDetails from "./Pages/RestaurantDetails";
 import Booking from "./Pages/Booking";
 import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
+import { AuthProvider } from "./context";
 
 function App() {
 	const location = useLocation();
@@ -30,22 +31,24 @@ function App() {
 	console.log({ location });
 	return (
 		<div className="app">
-			<NavTop />
-			{transitions.map(({ item: location, props, key }) => (
-				<animated.div style={props} key={key}>
-					<Switch location={location}>
-						<Route path="/login" component={Login} />
-						<Route path="/register" component={Register} />
-						<Route path="/nearby" component={Nearby} />
-						<Route path="/reserved" component={Reserved} />
-						<Route path="/saved" component={Saved} />
-						<Route path="/details" component={RestaurantDetails} />
-						<Route path="/booking" component={Booking} />
-						<Route path="/" exact component={Home} />
-					</Switch>
-				</animated.div>
-			))}
-			<NavBottom />
+			<AuthProvider>
+				<NavTop />
+				{transitions.map(({ item: location, props, key }) => (
+					<animated.div style={props} key={key}>
+						<Switch location={location}>
+							<Route path="/login" component={Login} />
+							<Route path="/register" component={Register} />
+							<Route path="/nearby" component={Nearby} />
+							<Route path="/reserved" component={Reserved} />
+							<Route path="/saved" component={Saved} />
+							<Route path="/details" component={RestaurantDetails} />
+							<Route path="/booking" component={Booking} />
+							<Route path="/" exact component={Home} />
+						</Switch>
+					</animated.div>
+				))}
+				<NavBottom />
+			</AuthProvider>
 		</div>
 	);
 }

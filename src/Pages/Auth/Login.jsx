@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { PostData } from "../../helpers";
-import { AuthReducer, SET_CREDS } from "../../Reducers/Auth.Reducer";
+import { AuthReducer, SET_CREDS } from "../../context/reducers/auth.reducer";
 
 export default function Login() {
 	const history = useHistory();

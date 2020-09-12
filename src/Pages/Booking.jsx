@@ -10,7 +10,7 @@ import {
 	SET_PERSONS,
 	SET_SPECIAL_NOTE,
 	//
-} from "../Reducers";
+} from "../context/reducers";
 
 export default function Booking() {
 	const location = useLocation();
