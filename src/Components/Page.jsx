@@ -12,7 +12,7 @@ export default function Page(props) {
 	]);
 	return (
 		<main
-			onClick={() => themeDispatch({ type: SET_SIDEBAR, payload: false })}
+			onClick={(e) => themeDispatch({ type: SET_SIDEBAR, payload: false })}
 			className="main"
 			{...props}
 		>

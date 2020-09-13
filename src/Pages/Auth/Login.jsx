@@ -28,7 +28,7 @@ export default function Login() {
 			.catch((err) => console.log(err.message));
 	};
 	return (
-		<div>
+		<div className="container container--auth">
 			<h1>Login Page</h1>
 			<form onSubmit={handleSubmit}>
 				<section className="input-wrapper">
@@ -51,7 +51,9 @@ export default function Login() {
 						onChange={handleChange}
 					/>
 				</section>
-				<button type="submit">Login</button>
+				<button className="btn btn--primary" type="submit">
+					Login
+				</button>
 				<Link to="/register">Register</Link>
 			</form>
 		</div>

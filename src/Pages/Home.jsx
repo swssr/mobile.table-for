@@ -20,6 +20,7 @@ export default function Home() {
 					!
 				</h1>
 				<p>Let's reserve a table for you.</p>
+				<br />
 				<SearchForm restaurants={[]} />
 			</header>
 			<div className="list-wrapper">

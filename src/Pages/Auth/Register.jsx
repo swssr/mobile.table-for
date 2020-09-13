@@ -30,8 +30,8 @@ export default function Login() {
 			.catch((err) => console.log(err.message));
 	};
 	return (
-		<div>
-			<h1>Regiser</h1>
+		<div className="container container--auth">
+			<h1>Regitser</h1>
 			<form onSubmit={handleSubmit}>
 				<section className="input-wrapper">
 					<label htmlFor="name">Fullname</label>
@@ -72,8 +72,12 @@ export default function Login() {
 						onChange={(e) => setConfirmPassword(e.target.value)}
 					/>
 				</section>
-				<button type="submit">Register</button>
-				<Link to="/login">Login</Link>
+				<button className="btn btn--primary" type="submit">
+					Register
+				</button>
+				<Link className="btn" to="/login">
+					Login
+				</Link>
 			</form>
 		</div>
 	);

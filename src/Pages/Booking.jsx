@@ -28,7 +28,7 @@ export default function Booking() {
 		return await PostData("/booking", state);
 	};
 	return (
-		<div>
+		<div className="container">
 			<h1>Book your table</h1>
 			<h3>{restaurant.name}</h3>
 			<p>{restaurant.rating}</p>

@@ -1,4 +1,4 @@
-export const MAX_SEATS = 8;
+export const MAX_SEATS = 6;
 export const MIN_SEATS = 0;
 
 export const ADD_PERSON = "ADD_PERSON";
