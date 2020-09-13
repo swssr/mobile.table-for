@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Fuse from "fuse.js";
 
+import SearchIcon from "../assets/search.svg";
+
 export default function SearchForm({ restaurants, ...props }) {
 	const [query, setQuery] = useState("");
 
@@ -18,7 +20,7 @@ export default function SearchForm({ restaurants, ...props }) {
 		return fuse.search(query);
 	};
 	return (
-		<form className="form" onSubmit={handleSearch}>
+		<form className="form form--inline" onSubmit={handleSearch}>
 			<div className="input-wrapper">
 				<input
 					onChange={(ev) => setQuery(ev.target.value)}
@@ -28,8 +30,8 @@ export default function SearchForm({ restaurants, ...props }) {
 					className="input"
 					placeholder="Search restaurant, cuisine, or location"
 				/>
-				<button type="submit" className="btn">
-					<span className="icon icon--search"></span>
+				<button type="submit" className="btn btn--primary">
+					<img src={SearchIcon} className="icon icon--search" />
 				</button>
 			</div>
 		</form>

@@ -51,9 +51,6 @@ h2 {
 	outline: 2px solid;
 	z-index: 100;
 }
-.nav--super + .main {
-	margin-top: 30vh;
-}
 
 nav ul {
 	display: flex;
@@ -101,9 +98,13 @@ a {
 	height: 101vw;
 	height: 101vh;
 	border-radius: 8px;
-	padding-top: 10vh;
+	padding-top: 5vh;
 	background-color: pink;
 }
+.list-wrapper {
+	background-color: green;
+}
+
 .icon {
 	--s: 1.6rem;
 	width: var(--s);
@@ -145,6 +146,12 @@ a {
 	margin-top: 10vh;
 	display: grid;
 	gap: 1rem;
+	align-items: start;
+	place-content: start;
+}
+.page--home header {
+	width: calc(100vw - 4rem);
+	display: grid;
 }
 .page--z-mid {
 	position: absolute;
@@ -209,6 +216,9 @@ a {
 	box-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
 	border-radius: var(--border-radius);
 }
+.btn--primary {
+	background-color: #000;
+}
 .btn--badge {
 	position: absolute;
 	width: 1.5rem;
@@ -232,8 +242,14 @@ a {
 .form {
 	width: 100%;
 }
+form--inline {
+	display: grid;
+	gap: 1rem;
+	grid-auto-flow: row;
+}
 .input-wrapper .input {
 	flex-grow: 100;
+	margin-right: 8px;
 }
 
 .places {
