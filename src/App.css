@@ -45,6 +45,7 @@ h2 {
 	position: absolute;
 	width: 100vw;
 
+	margin-top: 2rem;
 	margin-left: 0;
 	background-color: green;
 	outline: 2px solid;
@@ -96,6 +97,7 @@ a {
 	transform: scale(0.5) translateX(80%);
 }
 .main {
+	transition: transform 500ms ease-out;
 	height: 100vh;
 	background-color: pink;
 }
