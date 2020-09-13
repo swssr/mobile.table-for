@@ -1,12 +1,15 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
-import { useThemeState } from "../context";
+import { useThemeDispatch, useThemeState } from "../context";
+import { SET_SIDEBAR } from "../context/reducers";
 
 export default function SideBar() {
 	const themeState = useThemeState();
+	const themeDispatch = useThemeDispatch();
 	return (
 		<aside
+			onClick={() => themeDispatch({ type: SET_SIDEBAR, payload: false })}
 			className={`sidebar ${themeState.sidebarOpen ? "sidebar--open" : ""}`}
 		>
 			<ul className="sidebar__items">

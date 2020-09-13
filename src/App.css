@@ -94,11 +94,14 @@ a {
 }
 .sidebar--open ~ * .main {
 	filter: brightness(0.5);
-	transform: scale(0.5) translateX(80%);
+	transform: scale(0.5) translateX(98vw) rotate(-10deg);
 }
 .main {
 	transition: transform 500ms ease-out;
-	height: 100vh;
+	height: 101vw;
+	height: 101vh;
+	border-radius: 8px;
+	padding-top: 10vh;
 	background-color: pink;
 }
 .icon {
