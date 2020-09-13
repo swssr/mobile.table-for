@@ -42,11 +42,18 @@ h2 {
 	margin-left: -2rem;
 }
 .nav--super {
-	width: unset;
+	position: absolute;
+	width: 100vw;
+
 	margin-left: 0;
 	background-color: green;
 	outline: 2px solid;
+	z-index: 100;
 }
+.nav--super + .main {
+	margin-top: 30vh;
+}
+
 nav ul {
 	display: flex;
 	width: 100%;
@@ -71,6 +78,26 @@ a {
 .nav__link--active .text {
 	margin-top: 0;
 	transform: scale(1);
+}
+.sidebar {
+	position: absolute;
+	left: -100vw;
+	height: 100vh;
+	width: 100vw;
+	background-color: green;
+	outline: 2px solid;
+}
+.sidebar--open {
+	left: 0;
+	background-color: red;
+}
+.sidebar--open ~ * .main {
+	filter: brightness(0.5);
+	transform: scale(0.5) translateX(80%);
+}
+.main {
+	height: 100vh;
+	background-color: pink;
 }
 .icon {
 	--s: 1.6rem;
@@ -110,6 +137,7 @@ a {
 	padding: var(--padding);
 }
 .page--home {
+	margin-top: 10vh;
 	display: grid;
 	gap: 1rem;
 }
@@ -224,15 +252,15 @@ a {
 	width: max-content;
 	display: flex;
 	flex-wrap: nowrap;
-	gap: 1rem;
+	gap: 2rem;
 	height: 100%;
 	overflow-x: scroll;
 	overflow-y: hidden;
 }
 
 .list--overflow-y .card {
-	width: 80vw;
-	height: calc(100% - 3rem);
+	width: 76vw;
+	height: calc(71%);
 }
 .list--overflow-y .card:first-child {
 	margin-left: 1rem;

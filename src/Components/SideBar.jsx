@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
+import { useThemeState } from "../context";
 
 export default function SideBar() {
-    return (
-        <aside>
-                        
-        </aside>
-    )
+	const themeState = useThemeState();
+	return (
+		<aside
+			className={`sidebar ${themeState.sidebarOpen ? "sidebar--open" : ""}`}
+		></aside>
+	);
 }

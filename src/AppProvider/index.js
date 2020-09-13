@@ -1,6 +1,10 @@
 import React from "react";
-import { AuthProvider } from "../context";
+import { AuthProvider, ThemeProvider } from "../context";
 
 export default function (props) {
-	return <AuthProvider>{props.children}</AuthProvider>;
+	return (
+		<ThemeProvider>
+			<AuthProvider>{props.children}</AuthProvider>
+		</ThemeProvider>
+	);
 }
