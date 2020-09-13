@@ -23,16 +23,16 @@ import { AuthProvider } from "./context";
 function App() {
 	const location = useLocation();
 	const transitions = useTransition(location, (location) => location.pathname, {
-		from: { opacity: 0, width: "0%" },
-		enter: { opacity: 1, width: "100%" },
-		leave: { opacity: 0, width: "0%" },
+		from: { opacity: 0, transform: "scale(50%)" },
+		enter: { opacity: 1, transform: "scale(100%)" },
+		leave: { opacity: 0, transform: "scale(50%)" },
 	});
 
 	console.log({ location });
 	return (
 		<div className="app">
 			<AuthProvider>
-				<NavTop />
+				<NavTop className="nav nav--top nav--super" />
 				{transitions.map(({ item: location, props, key }) => (
 					<animated.div style={props} key={key}>
 						<Switch location={location}>

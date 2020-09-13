@@ -17,7 +17,14 @@ export const commonHeaders = {
 	"content-type": "application/json",
 };
 
-export const PostData = async (route, payload, headers) =>
-	await Axios.post(`${API_URL}${route}`, payload, {
-		headers: { ...commonHeaders, ...headers },
+export const PostData = async (route, payload, headers) => {
+	const store = localStorage.getItem("session");
+	const { token } = store ? JSON.parse(store) : "";
+
+	return await Axios.post(`${API_URL}${route}`, payload, {
+		headers: { ...commonHeaders, ...headers, authorization: `Bearer ${token}` },
 	});
+};
+
+export const fetcher = (url) =>
+	Axios.get(`${API_URL}${url}`).then((r) => r.data);

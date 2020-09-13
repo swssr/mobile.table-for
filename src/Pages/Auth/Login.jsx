@@ -23,7 +23,7 @@ export default function Login() {
 		ev.preventDefault();
 		return PostData("/auth/login", state)
 			.then((res) => localStorage.setItem("session", JSON.stringify(res)))
-			.then(() => history.push("/"))
+			.then(() => history.goBack())
 			.catch((err) => console.log(err.message));
 	};
 	return (
