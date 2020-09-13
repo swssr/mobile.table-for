@@ -23,7 +23,6 @@ export default function SearchForm({ restaurants, ...props }) {
 				<input
 					onChange={(ev) => setQuery(ev.target.value)}
 					type="search"
-					autoFocus
 					autoComplete
 					required
 					className="input"
