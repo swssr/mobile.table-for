@@ -11,7 +11,11 @@ export default function Page(props) {
 		location,
 	]);
 	return (
-		<main className="main" {...props}>
+		<main
+			onClick={() => themeDispatch({ type: SET_SIDEBAR, payload: false })}
+			className="main"
+			{...props}
+		>
 			{props.children}
 		</main>
 	);
