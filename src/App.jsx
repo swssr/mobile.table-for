@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import {
 	NavLink,
@@ -18,7 +18,7 @@ import RestaurantDetails from "./Pages/RestaurantDetails";
 import Booking from "./Pages/Booking";
 import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
-import { AuthProvider, ThemeProvider } from "./context";
+import { AuthProvider, ThemeProvider, useThemeDispatch } from "./context";
 import SideBar from "./Components/SideBar";
 import Page from "./Components/Page";
 
