@@ -23,7 +23,7 @@ export default function Login() {
 	const handleSubmit = (ev) => {
 		ev.preventDefault();
 		return PostData("/auth/login", state)
-Add 			.then((res) => {
+			.then((res) => {
 				if (res.status === 200) {
 					localStorage.setItem("session", JSON.stringify(res));
 					// location.state && location.state.from === "register"
