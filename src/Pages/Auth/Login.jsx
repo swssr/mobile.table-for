@@ -23,13 +23,18 @@ export default function Login() {
 	const handleSubmit = (ev) => {
 		ev.preventDefault();
 		return PostData("/auth/login", state)
-			.then((res) => localStorage.setItem("session", JSON.stringify(res)))
-			.then(() =>
-				location.state.from === "register"
-					? history.push("/")
-					: history.goBack()
-			)
-			.catch((err) => console.log(err.message));
+Add 			.then((res) => {
+				if (res.status === 200) {
+					localStorage.setItem("session", JSON.stringify(res));
+					// location.state && location.state.from === "register"
+					// 	? history.push("/")
+					// 	: history.goBack();
+					history.push("/");
+				} else {
+					alert("Invalid credentials!");
+				}
+			})
+			.catch(() => alert("Invalid credentials"));
 	};
 	return (
 		<div className="container container--auth">
@@ -43,6 +48,7 @@ export default function Login() {
 						className="input"
 						placeholder="Your Email Address"
 						onChange={handleChange}
+						required
 					/>
 				</section>
 				<section className="input-wrapper">
@@ -53,12 +59,15 @@ export default function Login() {
 						className="input"
 						placeholder="Your Email Address"
 						onChange={handleChange}
+						required
 					/>
 				</section>
 				<button className="btn btn--primary" type="submit">
 					Login
 				</button>
-				<Link to="/register">Register</Link>
+				<Link className="btn" to="/register">
+					Register
+				</Link>
 			</form>
 		</div>
 	);
