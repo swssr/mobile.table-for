@@ -1,5 +1,5 @@
-import React, { useReducer } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useEffect, useReducer } from "react";
+import { Link, useHistory, useLocation } from "react-router-dom";
 
 import { SET_CREDS } from "../../actions";
 import { useAuthDispatch, useAuthState } from "../../context";
@@ -8,6 +8,7 @@ import { PostData } from "../../helpers";
 
 export default function Login() {
 	const history = useHistory();
+	const location = useLocation();
 
 	const state = useAuthState();
 	const dispatch = useAuthDispatch();
@@ -23,7 +24,11 @@ export default function Login() {
 		ev.preventDefault();
 		return PostData("/auth/login", state)
 			.then((res) => localStorage.setItem("session", JSON.stringify(res)))
-			.then(() => history.goBack())
+			.then(() =>
+				location.state.from === "register"
+					? history.push("/")
+					: history.goBack()
+			)
 			.catch((err) => console.log(err.message));
 	};
 	return (

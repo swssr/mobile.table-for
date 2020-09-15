@@ -4,6 +4,7 @@ import { PostData } from "../../helpers";
 import { useAuthDispatch, useAuthState } from "../../context";
 
 import { SET_CREDS } from "../../actions/auth.actions";
+import Input from "../../Components/Input";
 
 export default function Login() {
 	const history = useHistory();
@@ -22,12 +23,16 @@ export default function Login() {
 
 	const handleSubmit = (ev) => {
 		ev.preventDefault();
-		if (confirmPassword !== state.password) return alert();
+		if (confirmPassword !== state.password) {
+			return alert("Passwords do not match");
+		}
 		return PostData("/auth/register", state)
 			.then((res) => {
 				console.log(res);
+				alert("Awesome! You're now registered. Email verification sent.");
+				history.push("/login", { from: "register" });
 			})
-			.catch((err) => console.log(err.message));
+			.catch((err) => alert("Hey! we couldn't register, what did you eat?"));
 	};
 	return (
 		<div className="container container--auth">
@@ -53,25 +58,20 @@ export default function Login() {
 						onChange={handleChange}
 					/>
 				</section>
-				<section className="input-wrapper">
-					<label htmlFor="password">Password</label>
-					<input
-						name="password"
-						type="password"
-						className="input"
-						placeholder="Your Email Address"
-						onChange={handleChange}
-					/>
-				</section>
-				<section className="input-wrapper">
-					<label htmlFor="confirm-password">Confirm Password</label>
-					<input
-						name="confirm-password"
-						type="password"
-						className="input"
-						onChange={(e) => setConfirmPassword(e.target.value)}
-					/>
-				</section>
+				<Input
+					label="Password"
+					name="password"
+					type="password"
+					placeholder="**********"
+					onChange={handleChange}
+				/>
+				<Input
+					label="Confirm Password"
+					name="confirm-password"
+					type="password"
+					placeholder="**********"
+					onChange={(e) => setConfirmPassword(e.target.value)}
+				/>
 				<button className="btn btn--primary" type="submit">
 					Register
 				</button>
