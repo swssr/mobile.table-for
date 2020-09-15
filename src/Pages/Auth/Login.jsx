@@ -2,7 +2,6 @@ import React, { useReducer } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import { SET_CREDS } from "../../actions";
-import Page from "../../Components/Page";
 import { useAuthDispatch, useAuthState } from "../../context";
 
 import { PostData } from "../../helpers";

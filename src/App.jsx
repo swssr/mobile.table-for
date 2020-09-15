@@ -20,7 +20,7 @@ import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
 import { AuthProvider, ThemeProvider, useThemeDispatch } from "./context";
 import SideBar from "./Components/SideBar";
-import Page from "./Components/Page";
+import Main from "./Components/Main";
 
 function App() {
 	const location = useLocation();
@@ -40,7 +40,7 @@ function App() {
 					{transitions.map(({ item: location, props, key }) => (
 						<animated.div style={props} key={key}>
 							<Switch location={location}>
-								<Page>
+								<Main>
 									<Route path="/login" component={Login} />
 									<Route path="/register" component={Register} />
 									<Route path="/nearby" component={Nearby} />
@@ -49,7 +49,7 @@ function App() {
 									<Route path="/details" component={RestaurantDetails} />
 									<Route path="/booking" component={Booking} />
 									<Route path="/" exact component={Home} />
-								</Page>
+								</Main>
 							</Switch>
 						</animated.div>
 					))}

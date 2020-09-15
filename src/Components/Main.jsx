@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useThemeDispatch } from "../context";
 import { SET_SIDEBAR, TOGGLE_SIDEBAR } from "../context/reducers";
 
-export default function Page(props) {
+export default function Main(props) {
 	const location = useLocation();
 	const themeDispatch = useThemeDispatch();
 
