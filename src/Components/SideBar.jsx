@@ -49,28 +49,21 @@ export default function SideBar() {
 						Register
 					</Link>
 				</li>
-				<li className="sidebar__item">
-					<Link to="/" className="link link--major">
-						Link 3
-					</Link>
-				</li>
-				<li className="sidebar__item">
-					<Link to="/" className="link link--major">
-						Link 3
-					</Link>
-				</li>
-				<li className="sidebar__item">
-					<Link to="/" className="link link--major">
-						Link 3
-					</Link>
-				</li>
-				<li className="sidebar__item">
-					<Link to="/" className="link link--major">
-						Link 3
-					</Link>
-				</li>
 			</ul>
-			<button className="btn btn--bottom">LOGOUT</button>
+			<button
+				onClick={() => {
+					if (profile) {
+						window.confirm("Confirm to logout.") &&
+							localStorage.setItem("session", "");
+					} else {
+						window.alert("Already logged out.");
+						localStorage.setItem("session", "");
+					}
+				}}
+				className="btn btn--bottom"
+			>
+				LOGOUT
+			</button>
 		</aside>
 	);
 }
