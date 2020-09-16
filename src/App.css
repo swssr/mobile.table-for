@@ -173,7 +173,11 @@ a {
 .img--bg ~ * {
 	z-index: 3;
 }
-
+.carousel-image {
+	width: 40vw;
+	height: 60vh;
+	background-color: red;
+}
 /* START-PAGES */
 .page {
 	width: 100vw;
@@ -232,7 +236,9 @@ a {
 .container--details {
 	height: 90vh;
 	padding: 4rem 2rem;
+	background-color: red;
 }
+
 .list {
 	width: 100%;
 	height: max-content;
@@ -416,7 +422,21 @@ header {
 	margin: 1rem 0;
 }
 /* PAGE.DETAILS */
-
+.container--details {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto 5fr 1fr;
+	flex-direction: column;
+	background-color: green;
+	place-content: start;
+}
+.container--details .btn--primary {
+	height: max-content;
+	text-align: center;
+	justify-self: end;
+	width: 100%;
+}
 /* PAGE.RESERVE */
 .seats-counter-wrapper {
 	display: grid;
