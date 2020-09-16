@@ -228,7 +228,10 @@ a {
 .container--auth .input-wrapper input {
 	width: calc(100vw - 4rem);
 }
-.container--booking {
+.container--booking,
+.container--details {
+	height: 90vh;
+	padding: 4rem 2rem;
 }
 .list {
 	width: 100%;
@@ -337,6 +340,37 @@ header {
 	flex-grow: 100;
 	margin-right: 8px;
 }
+.textarea {
+	outline: none;
+	border: 2px solid rgba(0, 0, 0, 0.16);
+	border-radius: 8px;
+	width: 100%;
+	height: 10ch;
+	padding: 1rem;
+	margin: 1rem 0;
+}
+.counter {
+	display: grid;
+	grid-template: 1fr 1fr / 1fr 1fr;
+	justify-content: start;
+	place-content: start;
+	place-items: start;
+	width: min-content;
+	height: min-content;
+}
+.counter input {
+	grid-column-start: 1;
+	grid-row: -1 / 1;
+	width: 3rem;
+	height: 3rem;
+}
+.counter input {
+	width: 3rem;
+	height: 3rem;
+}
+.counter button {
+	width: 3rem;
+}
 
 .places {
 	position: absolute;
@@ -372,6 +406,26 @@ header {
 .list--overflow-y .card:first-child {
 	margin-left: 1rem;
 }
+/* PAGE.BOOKING */
+.container--booking {
+	display: grid;
+	place-content: start;
+}
+.container--booking .btn--primary {
+	width: 100%;
+	margin: 1rem 0;
+}
+/* PAGE.DETAILS */
+
+/* PAGE.RESERVE */
+.seats-counter-wrapper {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	background-color: green;
+	height: min-content;
+	place-items: start;
+	place-content: start;
+}
 
 /* HELPERS */
 .circle-container {
@@ -385,6 +439,10 @@ header {
 	transform: scale(0.5);
 	background-color: red;
 }
+/* TABLE */
+.table .circle-container {
+	transform: scale(0.4);
+}
 .circle-container > * {
 	display: block;
 	position: absolute;
@@ -395,6 +453,7 @@ header {
 	height: 6em;
 }
 .circle-container > *:nth-of-type(1) {
+	border: 2px solid #000;
 	-webkit-transform: rotate(0deg) translate(10em) rotate(0deg);
 	transform: rotate(0deg) translate(10em) rotate(0deg);
 }
@@ -426,21 +485,21 @@ header {
 	-webkit-transform: rotate(315deg) translate(10em) rotate(-315deg);
 	transform: rotate(315deg) translate(10em) rotate(-315deg);
 }
-.circle-container .seat {
+.seat {
 	display: block;
 	max-width: 100%;
 	border-radius: 50%;
-	background-color: #000;
+	background-color: #fff;
 	-webkit-transition: 0.15s;
 	transition: 0.15s;
 	cursor: pointer;
 }
-.circle-container:hover .seat:not(:hover) {
-	filter: grayscale(0) brightness(0.8);
-	background-color: rgb(43, 91, 250);
+.seat input[type="checkbox"] {
+	opacity: 0;
 }
 
 .seat--active {
+	background-color: gray;
 }
 .seat input {
 	position: relative;
