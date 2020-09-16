@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Fuse from "fuse.js";
 
 import SearchIcon from "../assets/search.svg";
 
-export default function SearchForm({ restaurants, ...props }) {
+export default function SearchForm({
+	restaurants,
+	setResults,
+	handleClear,
+	...props
+}) {
 	const [query, setQuery] = useState("");
 
 	const handleSearch = (event) => {
 		event.preventDefault();
-		if (!query) return;
+		if (!query) {
+			return !query && handleClear && handleClear();
+		}
 
 		const options = {
 			keys: ["name", "cuisine"],
@@ -17,8 +24,9 @@ export default function SearchForm({ restaurants, ...props }) {
 		console.log(query, restaurants);
 
 		const fuse = new Fuse(restaurants, options);
-		return fuse.search(query);
+		return setResults(fuse.search(query));
 	};
+
 	return (
 		<form className="form form--inline" onSubmit={handleSearch}>
 			<div className="input-wrapper">
@@ -26,7 +34,6 @@ export default function SearchForm({ restaurants, ...props }) {
 					onChange={(ev) => setQuery(ev.target.value)}
 					type="search"
 					autoComplete
-					required
 					className="input"
 					placeholder="Search restaurant, cuisine, or location"
 				/>
