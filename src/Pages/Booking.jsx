@@ -1,6 +1,6 @@
 import Axios from "axios";
 import React, { useReducer, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { PostData } from "../helpers";
 import {
 	BookingReducer,
@@ -13,6 +13,7 @@ import {
 } from "../context/reducers";
 
 export default function Booking() {
+	const history = useHistory();
 	const { state: restaurant } = useLocation();
 
 	const [state, dispatch] = useReducer(BookingReducer, {
@@ -22,7 +23,15 @@ export default function Booking() {
 	});
 
 	const handleClick = async () => {
-		return await PostData("/booking", state);
+		return await PostData("/booking", {
+			...state,
+			restaurantId: restaurant._id,
+		})
+			.then(() => history.push("/reserved"))
+			.catch((err) => {
+				console.log(err);
+				alert("Error!");
+			});
 	};
 	return (
 		<div className="container container--booking">
