@@ -8,9 +8,16 @@ import { useAuthState } from "../context";
 
 export default function Home() {
 	const { data, error, loading } = useSWR("/restaurant/list", fetcher);
+	const { data: profile } = useSWR("/auth/profile", fetcher);
+	const [filtered, setFiltered] = useState();
 
 	const { user } = useAuthState();
 	const [arr, set] = useState([]);
+
+	//Onload
+	useEffect(() => {
+		console.log({ profile });
+	}, [profile]);
 
 	useEffect(() => {
 		if (!data) return;
@@ -21,20 +28,22 @@ export default function Home() {
 	return (
 		<div className="page page--home">
 			<header>
-				<h1>
-					Hey, {user ? user.fullname.substr(0, user.indexOf(" ") + 1) : "Human"}
-					!
-				</h1>
+				<h1>Hey, {profile ? profile.fullname : "Human"}!</h1>
 				<p>Let's reserve a table for you.</p>
 				<br />
-				<SearchForm restaurants={[]} />
+				<SearchForm
+					restaurants={arr}
+					setResults={setFiltered}
+					handleClear={setFiltered}
+				/>
 			</header>
 			<div className="list-wrapper">
 				{arr.length ? (
 					<section className="list">
-						{arr.map((r, index) => (
-							<RestaurantCard key={r._id} name={r.name} data={r} />
-						))}
+						{filtered ||
+							arr.map((r, index) => (
+								<RestaurantCard key={r._id} name={r.name} data={r} />
+							))}
 					</section>
 				) : (
 					<div className="banner">
