@@ -1,6 +1,8 @@
 import React from "react";
 import RandomImage from "./RandomImage";
 import { Link } from "react-router-dom";
+import { PostData } from "../helpers";
+import { mutate } from "swr";
 
 export default function RestaurantCard({
 	name,
@@ -11,13 +13,22 @@ export default function RestaurantCard({
 	data,
 	...rest
 }) {
+	const toggleSaved = async (e) => {
+		const url = e.target.checked
+			? "/user/save-location"
+			: "/user/remove-saved-location";
+		await PostData(url, { restaurantId: rest._id });
+		mutate("/restaurants/list");
+		mutate("/auth/profile");
+	};
 	return (
-		<Link to={{ pathname: "/details", state: data }}>
-			<figure className="card">
-				<RandomImage className="img img--bg" />
-				<button className="btn btn--badge">
-					{isSaved && <span className="icon icon--saved"></span>}
-				</button>
+		<figure className="card">
+			<RandomImage className="img img--bg" />
+			<label htmlFor="badge" className="btn btn--badge btn--toggle">
+				<input type="checkbox" checked={isSaved} onClick={toggleSaved} />
+				{isSaved && <span className="icon icon--saved"></span>}
+			</label>
+			<Link key={rest._id} to={{ pathname: "/details", state: data }}>
 				<figcaption>
 					<div>
 						<h3>{name}</h3>
@@ -33,10 +44,10 @@ export default function RestaurantCard({
 					</div>
 					<div>
 						<p className="location">{address}</p>
-						<p className="location">{data.seatsAvailable} Seats Avalaible</p>
+						<p className="location">{rest.seatsAvailable} Seats Avalaible</p>
 					</div>
 				</figcaption>
-			</figure>
-		</Link>
+			</Link>
+		</figure>
 	);
 }

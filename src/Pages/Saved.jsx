@@ -13,7 +13,7 @@ export default function Saved() {
 	}, [data]);
 
 	return (
-		<div className="container">
+		<div className="container container--saved">
 			<h1 className="page-head">Saved Restaurants</h1>
 			<section className="list">
 				{saved.map(() => (

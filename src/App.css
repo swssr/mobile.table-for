@@ -106,9 +106,6 @@ a {
 	transition: all 500ms ease-out;
 	z-index: 0;
 }
-.sidebar ~ * {
-	transition: 500ms all;
-}
 .sidebar--open ~ * .main {
 	background-color: #f4f4f4;
 	border-radius: 1rem;
@@ -135,8 +132,7 @@ a {
 }
 .main {
 	background-color: transparent;
-
-	height: calc(100vh - 4rem);
+	height: max-content;
 	transition: 500ms all;
 }
 
@@ -187,9 +183,9 @@ a {
 	padding: var(--padding);
 }
 .page--home {
-	margin-top: 10vh;
 	display: grid;
 	gap: 1rem;
+	transform: translateY(10vh);
 	align-items: start;
 	place-content: start;
 }
@@ -448,6 +444,14 @@ header {
 
 /* PAGE.RESERVE */
 .container--reserved {
+	display: grid;
+	background-color: red;
+	height: max-content;
+	padding: 4rem 2rem;
+}
+
+/* PAGE.RESERVE */
+.container--saved {
 	display: grid;
 	background-color: red;
 	height: max-content;

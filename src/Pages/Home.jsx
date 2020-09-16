@@ -24,7 +24,6 @@ export default function Home() {
 		console.log({ data, error, loading });
 		set(data.restaurants);
 	}, [data]);
-
 	return (
 		<div className="page page--home">
 			<header>
@@ -42,7 +41,14 @@ export default function Home() {
 					<section className="list">
 						{filtered ||
 							arr.map((r, index) => (
-								<RestaurantCard key={r._id} name={r.name} data={r} />
+								<RestaurantCard
+									key={r._id}
+									name={r.name}
+									isSaved={
+										profile && profile.saveLocations.find((l) => l == r._id)
+									}
+									{...r}
+								/>
 							))}
 					</section>
 				) : (
