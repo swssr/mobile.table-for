@@ -5,6 +5,8 @@ import CarouselImage from "../Components/CarouselImage";
 export default function RestaurantDetails() {
 	const { state } = useLocation();
 
+	console.clear();
+	console.log({ state });
 	return (
 		<div className="container container--details">
 			<header>

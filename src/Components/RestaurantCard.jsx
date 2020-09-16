@@ -4,15 +4,9 @@ import { Link } from "react-router-dom";
 import { PostData } from "../helpers";
 import { mutate } from "swr";
 
-export default function RestaurantCard({
-	name,
-	address,
-	opens,
-	closes,
-	isSaved,
-	data,
-	...rest
-}) {
+export default function RestaurantCard(props) {
+	const { name, address, opens, closes, isSaved, data, ...rest } = props;
+
 	const toggleSaved = async (e) => {
 		const url = e.target.checked
 			? "/user/save-location"
@@ -28,7 +22,7 @@ export default function RestaurantCard({
 				<input type="checkbox" checked={isSaved} onClick={toggleSaved} />
 				{isSaved && <span className="icon icon--saved"></span>}
 			</label>
-			<Link key={rest._id} to={{ pathname: "/details", state: data }}>
+			<Link key={rest._id} to={{ pathname: "/details", state: props }}>
 				<figcaption>
 					<div>
 						<h3>{name}</h3>

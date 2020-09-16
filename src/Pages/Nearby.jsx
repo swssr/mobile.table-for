@@ -42,7 +42,7 @@ export default function Nearby() {
 					<section className="list list--overflow-y">
 						{restaurants.length ? (
 							restaurants.map((r, index) => (
-								<RestaurantCard key={r._id} name={r.name} data={r} />
+								<RestaurantCard key={r._id} name={r.name} {...r} />
 							))
 						) : (
 							<section className="banner banner--empty">
