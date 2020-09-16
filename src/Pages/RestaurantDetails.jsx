@@ -1,49 +1,28 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
+import CarouselImage from "../Components/CarouselImage";
 
 export default function RestaurantDetails() {
-	const location = useLocation();
+	const { state } = useLocation();
+
 	return (
-		<div className="container">
-			<h1>Restaurant</h1>
-			<p>Open Now</p>
-			<p>
-				Call <strong>079 644 1784</strong> <br />
-				Email <strong>restaurant@mail.com</strong>
-			</p>
-			<Link
-				to={{ pathname: "/booking", state: { ...location.state } }}
-				className="btn btn--primary"
-			>
+		<div className="container container--details">
+			<header>
+				<h1>{state.name}</h1>
+				<p>now open</p>
+				<p>
+					Call <strong>079 644 1784</strong> <br />
+					Email <strong>restaurant@mail.com</strong>
+				</p>
+			</header>
+			<section className="carousel">
+				{state.pictures &&
+					state.pictures.length &&
+					state.pictures.map((url) => <CarouselImage url={url} />)}
+			</section>
+			<Link to={{ pathname: "/booking", state }} className="btn btn--primary">
 				Book a table
 			</Link>
-			<br />
-			<br />
-			<details>
-				<summary>Menu</summary>
-				<ul>
-					<li>
-						<h4>Fancy meal 1</h4>
-						<p>fancy description</p>
-					</li>
-					<li>
-						<h4>Fancy meal 2</h4>
-						<p>fancy description</p>
-					</li>
-					<li>
-						<h4>Fancy meal 3</h4>
-						<p>fancy description</p>
-					</li>
-					<li>
-						<h4>Fancy meal 4</h4>
-						<p>fancy description</p>
-					</li>
-					<li>
-						<h4>Fancy meal 5</h4>
-						<p>fancy description</p>
-					</li>
-				</ul>
-			</details>
 		</div>
 	);
 }
