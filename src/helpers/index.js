@@ -19,12 +19,23 @@ export const commonHeaders = {
 
 export const PostData = async (route, payload, headers) => {
 	const store = localStorage.getItem("session");
-	const { token } = store ? JSON.parse(store) : "";
+	const {
+		data: { token },
+	} = store ? JSON.parse(store) : "";
 
 	return await Axios.post(`${API_URL}${route}`, payload, {
 		headers: { ...commonHeaders, ...headers, authorization: `Bearer ${token}` },
 	});
 };
 
-export const fetcher = (url) =>
-	Axios.get(`${API_URL}${url}`).then((r) => r.data);
+export const fetcher = (url) => {
+	const store = localStorage.getItem("session");
+	const {
+		data: { token },
+	} = store ? JSON.parse(store) : "";
+
+	console.log({ token });
+	return Axios.get(`${API_URL}${url}`, {
+		headers: { ...commonHeaders, authorization: `Bearer ${token}` },
+	}).then((r) => r.data);
+};
