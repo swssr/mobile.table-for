@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import RestaurantCard from "../Components/RestaurantCard";
 import SearchForm from "../Components/SearchForm";
 
@@ -10,8 +10,14 @@ export default function Home() {
 	const { data, error, loading } = useSWR("/restaurant/list", fetcher);
 
 	const { user } = useAuthState();
+	const [arr, set] = useState([]);
 
-	console.log(data);
+	useEffect(() => {
+		if (!data) return;
+		console.log({ data, error, loading });
+		set(data.restaurants);
+	}, [data]);
+
 	return (
 		<div className="page page--home">
 			<header>
@@ -24,17 +30,11 @@ export default function Home() {
 				<SearchForm restaurants={[]} />
 			</header>
 			<div className="list-wrapper">
-				{data && data.restaurants.filter((r) => !r.hidden).lenght ? (
+				{arr.length ? (
 					<section className="list">
-						{data &&
-							data.restaurants
-								.filter((r) => !r.hidden)
-								.map((_, index) => (
-									<RestaurantCard
-										key={index}
-										name={`Restaurant ${index + 1}`}
-									/>
-								))}
+						{arr.map((r, index) => (
+							<RestaurantCard key={r._id} name={r.name} data={r} />
+						))}
 					</section>
 				) : (
 					<div className="banner">
