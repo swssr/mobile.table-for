@@ -5,13 +5,24 @@ import RestaurantCard from "../Components/RestaurantCard";
 import { fetcher } from "../helpers";
 
 export default function Reserved() {
-	const { data, error, loading } = useSWR("/booking", fetcher);
-	const { data: restaurants } = useSWR("/booking", fetcher);
+	const { data: book, error, loading } = useSWR("/booking", fetcher);
+	const { data: rest } = useSWR("/restaurant/list", fetcher);
+	const { data: pro } = useSWR("/auth/profile", fetcher);
+
 	const [reserved, set] = useState([]);
 
-	console.log({ data });
+	useEffect(() => {
+		if (!(rest && pro && book)) return;
+		// return console.log(book);
+		set(
+			book.bookings.map((b) => {
+				const _r = rest.restaurants.find((r) => r._id == b.restaurantId);
+				return { ...b, ..._r };
+			})
+		);
+	}, [rest, book, pro]);
 	return (
-		<div className="container">
+		<div className="container container--reserved">
 			<h1 className="page-head">Reserved ({reserved.length})</h1>
 			<ul className="list">
 				{reserved.map((r, index) => (
@@ -41,9 +52,10 @@ function BookingCard({ name, address, opens, closes, isSaved, ...rest }) {
 					</span>
 				</div>
 				<div>
+					<p>{new Date(rest.date).toLocaleString()}</p>
 					<p className="location">{address}</p>
 					<p className="location">
-						Booked <strong>{rest.seatsAvailable}</strong> Seats
+						Booked <strong>{rest.seats}</strong> Seats
 					</p>
 				</div>
 			</figcaption>

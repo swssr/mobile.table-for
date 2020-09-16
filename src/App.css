@@ -437,7 +437,6 @@ header {
 	justify-self: end;
 	width: 100%;
 }
-/* PAGE.RESERVE */
 .seats-counter-wrapper {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -447,6 +446,17 @@ header {
 	place-content: start;
 }
 
+/* PAGE.RESERVE */
+.container--reserved {
+	display: grid;
+	background-color: red;
+	height: max-content;
+	padding: 4rem 2rem;
+}
+.flex {
+	background-color: green;
+	display: flex;
+}
 /* HELPERS */
 .circle-container {
 	position: relative;
