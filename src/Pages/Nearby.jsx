@@ -4,12 +4,19 @@ import RestaurantCard from "../Components/RestaurantCard";
 import NavTop from "../Components/NavTop";
 
 import GoogleMaps from "google-map-react";
+import { fetcher } from "../helpers";
+import useSWR from "swr";
 
 export default function Nearby() {
+	
 	const [coord, setCoord] = useState();
-
+	
 	const [pos, error] = useGeoLocation();
-	const restaurants = Array(Math.ceil(2 + Math.random() * 10)).fill(null);
+	
+	const [restaurants, setRest] = useState([]);
+	const { data, loading } = useSWR("/restaurant/list", fetcher);
+	useEffect(() => data && setRest(data.restaurants), [data]);
+
 	if (error) alert("Failed to get your geolocation.");
 	return (
 		<div className="page page--z-mid">
@@ -33,12 +40,15 @@ export default function Nearby() {
 				<h2>Nearby Places</h2>
 				<div className="overflow-wrap">
 					<section className="list list--overflow-y">
-						{restaurants.map((_, index) => (
-							<RestaurantCard
-								name={`Restaurant ${index + 1}`}
-								address={`Restaurant ${index + 1}`}
-							/>
-						))}
+						{restaurants.length ? (
+							restaurants.map((r, index) => (
+								<RestaurantCard key={r._id} name={r.name} data={r} />
+							))
+						) : (
+							<section className="banner banner--empty">
+								Nothing to see here
+							</section>
+						)}
 					</section>
 				</div>
 			</div>
