@@ -13,10 +13,7 @@ import {
 } from "../context/reducers";
 
 export default function Booking() {
-	const location = useLocation();
-
-	console.log({ location });
-	const [restaurant] = useState({});
+	const { state: restaurant } = useLocation();
 
 	const [state, dispatch] = useReducer(BookingReducer, {
 		date: new Date(),
@@ -28,70 +25,90 @@ export default function Booking() {
 		return await PostData("/booking", state);
 	};
 	return (
-		<div className="container">
-			<h1>Book your table</h1>
-			<h3>{restaurant.name}</h3>
+		<div className="container container--booking">
+			<p>reservation</p>
+			<h1>{restaurant.name}</h1>
 			<p>{restaurant.rating}</p>
-
-			<div className="counter">
-				<button
-					onClick={() => dispatch({ type: REMOVE_PERSON })}
-					className="btn btn--icon"
-				>
-					-
-				</button>
-				<input
-					type="number"
-					name="seats"
-					id="seats"
-					value={state.seats}
-					onChange={(e) =>
-						dispatch({ type: SET_PERSONS, payload: +e.target.value })
+			<p>{restaurant.seatsAvailable} Seats Available</p>
+			<section className="seats-counter-wrapper">
+				<div
+					title={
+						!restaurant.seatsAvailable
+							? "No seats available"
+							: "How many people are booking are you with?"
 					}
-				/>
-				<button
-					onClick={(_) => dispatch({ type: ADD_PERSON })}
-					className="btn btn--icon"
+					className="counter"
 				>
-					+
-				</button>
-			</div>
+					<button
+						disabled={!restaurant.seatsAvailable}
+						onClick={() => dispatch({ type: ADD_PERSON })}
+					>
+						+
+					</button>
+					<button
+						disabled={!restaurant.seatsAvailable}
+						onClick={() => dispatch({ type: REMOVE_PERSON })}
+					>
+						-
+					</button>
+					<input
+						disabled={!restaurant.seatsAvailable}
+						type="number"
+						name="seats"
+						id="seats"
+						value={state.seats}
+						onChange={(e) =>
+							dispatch({ type: SET_PERSONS, payload: +e.target.value })
+						}
+					/>
+				</div>
 
-			<div className="table">
 				<ul class="circle-container">
 					{Array(MAX_SEATS)
 						.fill(null)
 						.map((_, idx) => (idx < state.seats ? true : false))
 						.map((checked) => (
-							<input
-								type="checkbox"
-								id="seat"
-								className="seat"
-								checked={checked}
-								onChange={(e) => {
-									if (e.target.checked) {
-										dispatch({ type: ADD_PERSON });
-									} else {
-										dispatch({ type: REMOVE_PERSON });
-									}
-								}}
-							/>
+							<label
+								className={`seat${checked ? " seat--active" : ""}`}
+								htmlFor="seats"
+							>
+								<input
+									type="checkbox"
+									id="seat"
+									checked={checked}
+									disabled={!restaurant.seatsAvailable}
+									onChange={(e) => {
+										if (e.target.checked) {
+											dispatch({ type: ADD_PERSON });
+										} else {
+											dispatch({ type: REMOVE_PERSON });
+										}
+									}}
+								/>
+							</label>
 						))}
 				</ul>
-				<section>
+			</section>
+			<details>
+				<summary>
 					<h3>Special Note</h3>
 					<p>Anyhing you want to know before you come.</p>
-					<textarea
-						onChange={(e) =>
-							dispatch({ type: SET_SPECIAL_NOTE, payload: e.target.value })
-						}
-						placeholder="I like potatoes"
-					></textarea>
-				</section>
-				<button onClick={handleClick} className="btn btn--primary">
-					Reserve
-				</button>
-			</div>
+				</summary>
+				<textarea
+					className="textarea"
+					onChange={(e) =>
+						dispatch({ type: SET_SPECIAL_NOTE, payload: e.target.value })
+					}
+					placeholder="I like potatoes"
+				></textarea>
+			</details>
+			<button
+				onClick={handleClick}
+				disabled={!restaurant.seatsAvailable}
+				className="btn btn--primary"
+			>
+				Reserve
+			</button>
 		</div>
 	);
 }
