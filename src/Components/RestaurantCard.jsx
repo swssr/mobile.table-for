@@ -33,6 +33,7 @@ export default function RestaurantCard({
 					</div>
 					<div>
 						<p className="location">{address}</p>
+						<p className="location">{data.seatsAvailable} Seats Avalaible</p>
 					</div>
 				</figcaption>
 			</figure>
