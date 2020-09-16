@@ -31,10 +31,14 @@ export default function Login() {
 					// 	: history.goBack();
 					history.push("/");
 				} else {
+					console.log({ res });
 					alert("Invalid credentials!");
 				}
 			})
-			.catch(() => alert("Invalid credentials"));
+			.catch((err) => {
+				console.error(err);
+				alert("Invalid credentials");
+			});
 	};
 	return (
 		<div className="container container--auth">
