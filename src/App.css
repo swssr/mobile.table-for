@@ -190,7 +190,6 @@ a {
 .carousel-image {
 	width: 80vw;
 	height: 40vh;
-	background-color: red;
 	flex-shrink: 0;
 	margin-right: 1rem;
 	border-radius: 1rem;
@@ -454,7 +453,6 @@ header {
 	grid-template-columns: 1fr;
 	grid-template-rows: auto 5fr 1fr;
 	flex-direction: column;
-	background-color: green;
 	place-content: start;
 }
 .container--details .btn--primary {
@@ -464,10 +462,10 @@ header {
 	width: 100%;
 }
 .seats-counter-wrapper {
-	display: grid;
+	display: flex;
 	grid-template-columns: repeat(2, 1fr);
-	background-color: green;
-	height: min-content;
+	background-color: pink;
+	height: 40vh;
 	place-items: start;
 	place-content: start;
 }
