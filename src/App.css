@@ -325,6 +325,11 @@ a {
 	background-color: #00000011;
 	text-indent: 1rem;
 }
+.btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 .btn--bottom {
 	position: absolute;
 	width: calc(100vw - 4rem);
@@ -348,6 +353,9 @@ a {
 	background-color: transparent;
 	background-image: url(https://img.icons8.com/ios/50/000000/bookmark-ribbon.png);
 	background-size: cover;
+}
+.btn--icon {
+	padding: 0;
 }
 .input-wrapper {
 	display: flex;
@@ -470,8 +478,6 @@ header {
 	grid-template-columns: repeat(2, 1fr);
 	background-color: pink;
 	height: 40vh;
-	place-items: start;
-	place-content: start;
 }
 
 /* PAGE.RESERVE */
