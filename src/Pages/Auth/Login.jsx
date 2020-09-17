@@ -2,6 +2,7 @@ import React, { useEffect, useReducer } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 
 import { SET_CREDS } from "../../actions";
+import Input from "../../Components/Input";
 import { useAuthDispatch, useAuthState } from "../../context";
 
 import { PostData } from "../../helpers";
@@ -44,28 +45,20 @@ export default function Login() {
 		<div className="container container--auth">
 			<h1>Login Page</h1>
 			<form onSubmit={handleSubmit}>
-				<section className="input-wrapper">
-					<label htmlFor="email">Email Address</label>
-					<input
-						name="email"
-						type="email"
-						className="input"
-						placeholder="Your Email Address"
-						onChange={handleChange}
-						required
-					/>
-				</section>
-				<section className="input-wrapper">
-					<label htmlFor="password">Password</label>
-					<input
-						name="password"
-						type="password"
-						className="input"
-						placeholder="Your Email Address"
-						onChange={handleChange}
-						required
-					/>
-				</section>
+				<Input
+					label="Email Address"
+					name="email"
+					type="email"
+					placeholder="Human@mars.com"
+					onChange={handleChange}
+				/>
+				<Input
+					label="Password"
+					name="password"
+					type="password"
+					placeholder="**********"
+					onChange={handleChange}
+				/>
 				<button className="btn btn--primary" type="submit">
 					Login
 				</button>

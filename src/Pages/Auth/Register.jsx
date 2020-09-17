@@ -32,32 +32,27 @@ export default function Login() {
 				alert("Awesome! You're now registered. Email verification sent.");
 				history.push("/login", { from: "register" });
 			})
-			.catch((err) => alert("Hey! we couldn't register, what did you eat?"));
+			.catch((err) => {
+				alert(err.response.data);
+			});
 	};
 	return (
 		<div className="container container--auth">
 			<h1>Register.</h1>
 			<form onSubmit={handleSubmit}>
-				<section className="input-wrapper">
-					<label htmlFor="name">Fullname</label>
-					<input
-						name="fullname"
-						type="text"
-						className="input"
-						placeholder="Nice Human"
-						onChange={handleChange}
-					/>
-				</section>
-				<section className="input-wrapper">
-					<label htmlFor="email">Email Address</label>
-					<input
-						name="email"
-						type="email"
-						className="input"
-						placeholder="Your Email Address"
-						onChange={handleChange}
-					/>
-				</section>
+				<Input
+					label="Fullname"
+					name="fullname"
+					placeholder="Amazing Human"
+					onChange={handleChange}
+				/>
+				<Input
+					label="Email Address"
+					name="email"
+					type="email"
+					placeholder="Human@mars.com"
+					onChange={handleChange}
+				/>
 				<Input
 					label="Password"
 					name="password"
