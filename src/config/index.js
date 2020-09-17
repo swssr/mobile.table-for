@@ -1,4 +1,4 @@
-const IS_LIVE = !process.env.NODE_ENV === "development";
+const IS_LIVE = process.env.NODE_ENV !== "development";
 
 module.exports = {
 	IS_LIVE,
