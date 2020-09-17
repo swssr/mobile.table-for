@@ -240,7 +240,6 @@ a {
 .container--details {
 	height: 90vh;
 	padding: 4rem 2rem;
-	background-color: red;
 }
 
 .list {
@@ -456,7 +455,6 @@ header {
 /* PAGE.RESERVE */
 .container--reserved {
 	display: grid;
-	background-color: red;
 	height: max-content;
 	padding: 4rem 2rem;
 }
@@ -464,7 +462,6 @@ header {
 /* PAGE.RESERVE */
 .container--saved {
 	display: grid;
-	background-color: red;
 	height: max-content;
 	padding: 4rem 2rem;
 }
