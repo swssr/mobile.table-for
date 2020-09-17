@@ -1,8 +1,17 @@
 :root {
 	--border-radius: 8px;
 }
-h2 {
+h1,
+h2,
+h3,
+h4,
+h5 {
 	margin-bottom: 1rem;
+	margin-left: 1rem;
+}
+p {
+	color: rgba(0, 0, 0, 0.76);
+	margin-left: 1rem;
 }
 #root {
 }
@@ -290,9 +299,11 @@ a {
 	background-color: #fff;
 	border-radius: var(--border-radius);
 	border-radius: 1rem;
+	border: 2px solid #0000000c;
 }
-.btn {
-	border: 2px solid rgba(0, 0, 0, 0.068);
+.input {
+	background-color: #00000011;
+	text-indent: 1rem;
 }
 .btn--bottom {
 	position: absolute;
