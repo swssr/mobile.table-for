@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import RandomImage from "./RandomImage";
 import { Link } from "react-router-dom";
 import { PostData } from "../helpers";
@@ -6,6 +6,7 @@ import { mutate } from "swr";
 
 export default function RestaurantCard(props) {
 	const { name, address, opens, closes, isSaved, data, ...rest } = props;
+	const [checked, set] = useState();
 
 	const toggleSaved = async (e) => {
 		const url = e.target.checked
@@ -19,7 +20,11 @@ export default function RestaurantCard(props) {
 		<figure className="card">
 			<RandomImage className="img img--bg" />
 			<label htmlFor="badge" className="btn btn--badge btn--toggle">
-				<input type="checkbox" checked={isSaved} onClick={toggleSaved} />
+				<input
+					type="checkbox"
+					defaultChecked={isSaved}
+					onChange={toggleSaved}
+				/>
 				{isSaved && <span className="icon icon--saved"></span>}
 			</label>
 			<Link key={rest._id} to={{ pathname: "/details", state: props }}>
