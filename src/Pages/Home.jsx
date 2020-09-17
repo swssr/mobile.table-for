@@ -3,11 +3,11 @@ import RestaurantCard from "../Components/RestaurantCard";
 import SearchForm from "../Components/SearchForm";
 
 import useSWR from "swr";
-import { fetcher } from "../helpers";
+import { baseFetcher, fetcher } from "../helpers";
 import { useAuthState } from "../context";
 
 export default function Home() {
-	const { data, error, loading } = useSWR("/restaurant/list", fetcher);
+	const { data, error, loading } = useSWR("/restaurant/list", baseFetcher);
 	const { data: profile } = useSWR("/auth/profile", fetcher);
 	const [filtered, setFiltered] = useState();
 
@@ -45,7 +45,9 @@ export default function Home() {
 									key={r._id}
 									name={r.name}
 									isSaved={
-										profile && profile.saveLocations.find((l) => l == r._id)
+										profile
+											? profile.saveLocations.find((l) => l == r._id)
+											: false
 									}
 									{...r}
 								/>

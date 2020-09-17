@@ -48,3 +48,6 @@ export const fetcher = (url) => {
 		headers: { ...commonHeaders, authorization: `Bearer ${token}` },
 	}).then((r) => r.data);
 };
+
+export const baseFetcher = async (url) =>
+	await Axios.get(`${API_URL}${url}`).then((r) => r.data);

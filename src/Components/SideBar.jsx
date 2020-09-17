@@ -26,10 +26,38 @@ export default function SideBar() {
 				className="img img--thumb img--profile"
 			/> */}
 			<header>
+				<br />
+				<br />
+				<br />
 				<h1>{(user && user.fullname) || "Homo Sepian"} </h1>
 			</header>
 			<ul className="sidebar__items">
 				<li className="sidebar__item">
+					<span className="sidebar__item-icon"></span>
+					<Link to="/register" className="link link--major">
+						Profile
+					</Link>
+				</li>
+				<li className="sidebar__item">
+					<span className="sidebar__item-icon"></span>
+					<Link to="/register" className="link link--major">
+						Visit History
+					</Link>
+				</li>
+				<li className="sidebar__item">
+					<span className="sidebar__item-icon"></span>
+					<Link to="/register" className="link link--major">
+						Notifications
+					</Link>
+				</li>
+				<li className="sidebar__item">
+					<span className="sidebar__item-icon"></span>
+					<Link to="/register" className="link link--major">
+						Settings
+					</Link>
+				</li>
+				<li className="sidebar__item">
+					<span className="sidebar__item-icon"></span>
 					{!user ? (
 						<Link to="/login" className="link link--major">
 							Login
@@ -45,6 +73,7 @@ export default function SideBar() {
 					)}
 				</li>
 				<li className="sidebar__item">
+					<span className="sidebar__item-icon"></span>
 					<Link to="/register" className="link link--major">
 						Register
 					</Link>
