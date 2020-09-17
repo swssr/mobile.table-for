@@ -23,7 +23,11 @@ export default function Reserved() {
 	}, [rest, book, pro]);
 	return (
 		<div className="container container--reserved">
-			<h1 className="page-head">Reserved ({reserved.length})</h1>
+			<header>
+				<h1 className="page-head">Reserved</h1>
+				<p>({reserved.length}) historicaly</p>
+			</header>
+
 			<ul className="list">
 				{reserved.map((r, index) => (
 					<BookingCard {...r} />
