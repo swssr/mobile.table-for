@@ -318,6 +318,8 @@ a {
 	border-radius: var(--border-radius);
 	border-radius: 1rem;
 	border: 2px solid #0000000c;
+	display: grid;
+	place-items: center;
 }
 .input {
 	background-color: #00000011;
@@ -333,8 +335,6 @@ a {
 .btn--primary {
 	color: #fff;
 	background-color: #000;
-	display: grid;
-	place-items: center;
 }
 .btn--badge {
 	position: absolute;

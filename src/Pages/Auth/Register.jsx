@@ -36,9 +36,7 @@ export default function Login() {
 	};
 	return (
 		<div className="container container--auth">
-			<h1>
-				Register <br />.
-			</h1>
+			<h1>Register.</h1>
 			<form onSubmit={handleSubmit}>
 				<section className="input-wrapper">
 					<label htmlFor="name">Fullname</label>
