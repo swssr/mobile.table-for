@@ -282,17 +282,17 @@ a {
 .btn {
 	border: none;
 	outline: none;
-	min-width: 4rem;
-	min-height: 4rem;
+	min-width: 5rem;
+	min-height: 5rem;
 	padding: 1rem;
 	font-size: 1rem;
 	font-family: inherit;
 	background-color: #fff;
-	box-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
 	border-radius: var(--border-radius);
+	border-radius: 1rem;
 }
 .btn {
-	border: 2px solid rgba(0, 0, 0, 0.16);
+	border: 2px solid rgba(0, 0, 0, 0.068);
 }
 .btn--bottom {
 	position: absolute;
