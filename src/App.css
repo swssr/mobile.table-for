@@ -333,6 +333,8 @@ a {
 .btn--primary {
 	color: #fff;
 	background-color: #000;
+	display: grid;
+	place-items: center;
 }
 .btn--badge {
 	position: absolute;
@@ -459,7 +461,9 @@ header {
 	height: max-content;
 	text-align: center;
 	justify-self: end;
-	width: 100%;
+	width: calc(100vw - 4rem);
+	margin-left: -2rem;
+	transform: translateX(-2rem);
 }
 .seats-counter-wrapper {
 	display: flex;
