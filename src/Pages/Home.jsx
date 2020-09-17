@@ -19,6 +19,7 @@ export default function Home() {
 		console.log({ profile });
 	}, [profile]);
 
+	console.log({ arr });
 	useEffect(() => {
 		if (!data) return;
 		console.log({ data, error, loading });

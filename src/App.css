@@ -32,12 +32,12 @@ p {
 	padding: 1rem 1.5rem;
 }
 .nav--bottom {
-	--margin: 1rem;
 	position: fixed;
 	background-color: rgba(255, 255, 255, 0.932);
-	width: calc(100% - var(--margin) * 2);
-	bottom: 1rem;
-	left: var(--margin);
+	/* width: calc(100% - var(--margin) * 2); */
+	width: 100%;
+	padding: 1rem 2.2rem;
+	bottom: 0;
 	box-shadow: 0 0 16px rgba(0, 0, 0, 0.26);
 	border-radius: var(--border-radius);
 	transition: unset;
