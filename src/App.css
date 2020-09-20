@@ -505,12 +505,11 @@ header {
 }
 /* HELPERS */
 .circle-container {
-	position: absolute;
 	width: 20em;
 	height: 20em;
 	border-radius: 50%;
 	padding: 0;
-	right: 2rem;
+	margin-right: -50%;
 	list-style: none;
 	transform: scale(0.5);
 }
