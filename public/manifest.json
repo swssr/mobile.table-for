@@ -6,7 +6,7 @@
 	"theme_color": "#000000",
 	"description": "Restaurant reservation platform - Let's you book your table with just a few clicks",
 	"orientation": "potrait",
-	"background_color": "#686bd2",
+	"background_color": "#000000",
 	"related_applications": [],
 	"prefer_related_applications": false,
 	"icons": [
