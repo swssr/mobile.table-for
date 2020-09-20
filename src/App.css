@@ -486,13 +486,6 @@ header {
 	margin-left: -2rem;
 	transform: translateX(-2rem);
 }
-.seats-counter-wrapper {
-	display: flex;
-	grid-template-columns: repeat(2, 1fr);
-	background-color: pink;
-	height: 40vh;
-}
-
 /* PAGE.RESERVE */
 .container--reserved {
 	display: grid;
@@ -512,31 +505,80 @@ header {
 }
 /* HELPERS */
 .circle-container {
-	position: relative;
+	position: absolute;
 	width: 20em;
 	height: 20em;
 	border-radius: 50%;
 	padding: 0;
+	right: 2rem;
 	list-style: none;
-	margin: 5em auto 0;
 	transform: scale(0.5);
-	background-color: red;
+}
+.circle-container::after {
+	content: "";
+	position: absolute;
+	width: 12rem;
+	height: 12rem;
+	border-radius: 50%;
+	background-color: #000;
+	top: calc(48% - 6rem);
+	left: calc(48% - 6rem);
+	z-index: 100;
 }
 /* TABLE */
 .table .circle-container {
 	transform: scale(0.4);
 }
-.circle-container > * {
+.seats-counter-wrapper {
+	display: grid;
+	align-items: start;
+	height: 40vh;
+}
+.seat {
+	display: block;
+	max-width: 100%;
+	border-radius: 50%;
+	background-color: gray;
+	-webkit-transition: 0.15s;
+	transition: 0.15s;
+	cursor: pointer;
+}
+.seat input[type="checkbox"] {
+	opacity: 0;
+}
+
+.seat--active {
+	background-color: #000;
+}
+.seat input {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	opacity: 0;
+}
+.seat input:checked + label {
+	content: "";
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	z-index: 2;
+}
+
+.circle-container > .seat {
 	display: block;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	margin: -3em;
-	width: 6em;
-	height: 6em;
+	width: 5em;
+	height: 5em;
 }
 .circle-container > *:nth-of-type(1) {
-	border: 2px solid #000;
 	-webkit-transform: rotate(0deg) translate(10em) rotate(0deg);
 	transform: rotate(0deg) translate(10em) rotate(0deg);
 }
@@ -567,38 +609,4 @@ header {
 .circle-container > *:nth-of-type(8) {
 	-webkit-transform: rotate(315deg) translate(10em) rotate(-315deg);
 	transform: rotate(315deg) translate(10em) rotate(-315deg);
-}
-.seat {
-	display: block;
-	max-width: 100%;
-	border-radius: 50%;
-	background-color: #fff;
-	-webkit-transition: 0.15s;
-	transition: 0.15s;
-	cursor: pointer;
-}
-.seat input[type="checkbox"] {
-	opacity: 0;
-}
-
-.seat--active {
-	background-color: gray;
-}
-.seat input {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	border-radius: 50%;
-	opacity: 0;
-}
-.seat input:checked + label {
-	content: "";
-	position: absolute;
-	display: block;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	border-radius: 50%;
-	z-index: 2;
 }

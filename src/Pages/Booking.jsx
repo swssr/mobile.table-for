@@ -2,6 +2,8 @@ import Axios from "axios";
 import React, { useReducer, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { PostData } from "../helpers";
+import Input from "../Components/Input";
+
 import {
 	BookingReducer,
 	ADD_PERSON,
@@ -39,40 +41,50 @@ export default function Booking() {
 			<h1>{restaurant.name}</h1>
 			<p>{restaurant.rating}</p>
 			<p>{restaurant.seatsAvailable} Seats Available</p>
+			<Input label="Reservation date" type="date" />
+			<Input label="What time" type="time" />
 			<section className="seats-counter-wrapper">
-				<div
-					title={
-						!restaurant.seatsAvailable
-							? "No seats available"
-							: "How many people are booking are you with?"
-					}
-					className="counter"
-				>
-					<button
-						disabled={!restaurant.seatsAvailable}
-						onClick={() => dispatch({ type: ADD_PERSON })}
-					>
-						+
-					</button>
-					<button
-						disabled={!restaurant.seatsAvailable}
-						onClick={() => dispatch({ type: REMOVE_PERSON })}
-					>
-						-
-					</button>
-					<input
-						disabled={!restaurant.seatsAvailable}
-						type="number"
-						name="seats"
-						id="seats"
-						value={state.seats}
-						onChange={(e) =>
-							dispatch({ type: SET_PERSONS, payload: +e.target.value })
+				<section>
+					<label>How many people are you with</label>
+					<div
+						title={
+							!restaurant.seatsAvailable
+								? "No seats available"
+								: "How many people are booking are you with?"
 						}
-					/>
-				</div>
+						className="counter"
+					>
+						<button
+							disabled={!restaurant.seatsAvailable}
+							onClick={() => dispatch({ type: ADD_PERSON })}
+						>
+							+
+						</button>
+						<button
+							disabled={!restaurant.seatsAvailable}
+							onClick={() => dispatch({ type: REMOVE_PERSON })}
+						>
+							-
+						</button>
+						<input
+							disabled={!restaurant.seatsAvailable}
+							type="number"
+							name="seats"
+							id="seats"
+							value={state.seats}
+							onChange={(e) =>
+								dispatch({ type: SET_PERSONS, payload: +e.target.value })
+							}
+						/>
+					</div>
+				</section>
 
-				<ul class="circle-container">
+				<ul
+					class="circle-container"
+					style={{
+						"--v": `${state.seats} ${state.seats > 1 ? "people" : "person"}`,
+					}}
+				>
 					{Array(MAX_SEATS)
 						.fill(null)
 						.map((_, idx) => (idx < state.seats ? true : false))
