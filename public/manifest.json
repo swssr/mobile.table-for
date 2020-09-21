@@ -1,6 +1,6 @@
 {
 	"name": "TableFor",
-	"display": "standalone",
+	"display": "minimal-ui",
 	"start_url": "/",
 	"short_name": "TableFor",
 	"theme_color": "#000000",
