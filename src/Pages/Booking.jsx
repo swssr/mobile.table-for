@@ -81,9 +81,9 @@ export default function Booking() {
 			/> */}
 
 			<section className="seats-counter-wrapper">
-				<section>
+				<section className="seats-counter-input">
 					<label>
-						TABLE<strong>FOR</strong> how of you?
+						TABLE<strong>FOR</strong> how many of you?
 					</label>
 					<div
 						title={
@@ -158,7 +158,7 @@ export default function Booking() {
 					<p>Anyhing you want to know before you come.</p>
 				</summary>
 				<textarea
-					className="textarea"
+					className="input textarea"
 					onChange={(e) =>
 						dispatch({ type: SET_SPECIAL_NOTE, payload: e.target.value })
 					}

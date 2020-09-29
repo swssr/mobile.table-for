@@ -164,7 +164,7 @@ input[type="checkbox"] ~ .icon--saved {
 	object-fit: cover;
 }
 .img--thumb {
-	--s: 3rem;
+	--s: 3.5rem;
 	width: var(--s);
 	height: var(--s);
 	border-radius: 4px;
@@ -466,7 +466,12 @@ header {
 /* PAGE.BOOKING */
 .container--booking {
 	display: grid;
+	grid-template-columns: 1fr;
 	place-content: start;
+}
+
+.container--booking h1 {
+	margin-bottom: 0;
 }
 .container--booking .btn--primary {
 	width: 100%;
@@ -508,13 +513,14 @@ header {
 }
 /* HELPERS */
 .circle-container {
-	width: 20em;
-	height: 20em;
+	width: 10em;
+	height: 10em;
 	border-radius: 50%;
 	padding: 0;
 	margin-right: -50%;
 	list-style: none;
 	transform: scale(0.5);
+	margin-top: 4rem;
 }
 .circle-container::after {
 	content: "";
@@ -533,8 +539,14 @@ header {
 }
 .seats-counter-wrapper {
 	display: grid;
+	grid-template-columns: 1fr 1fr;
 	align-items: start;
-	height: 40vh;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+.seats-counter-input {
+	display: grid;
+	gap: 1rem;
 }
 .seat {
 	display: block;
