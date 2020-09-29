@@ -14,6 +14,7 @@ import {
 	SET_SPECIAL_NOTE,
 	//
 } from "../context/reducers";
+import { TextField } from "@material-ui/core";
 
 export default function Booking() {
 	const history = useHistory();
@@ -79,6 +80,31 @@ export default function Booking() {
 					},
 				}}
 			/> */}
+
+			<fieldset className="input">
+				<TextField
+					id="date"
+					label="What day?"
+					type="date"
+					defaultValue="2017-05-24"
+					variant="standard"
+					InputLabelProps={{
+						shrink: true,
+					}}
+				/>
+			</fieldset>
+			<fieldset className="input">
+				<TextField
+					id="date"
+					label="What Time?"
+					type="time"
+					defaultValue="2017-05-24"
+					variant="standard"
+					InputLabelProps={{
+						shrink: true,
+					}}
+				/>
+			</fieldset>
 
 			<section className="seats-counter-wrapper">
 				<section className="seats-counter-input">

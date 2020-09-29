@@ -388,6 +388,20 @@ form--inline {
 	grid-auto-flow: row;
 	margin-bottom: -1rem;
 }
+fieldset {
+	display: grid;
+	width: 100%;
+	filter: grayscale(1);
+	margin-top: 2rem;
+	padding-bottom: 2rem;
+}
+.MuiInputLabel-shrink {
+	transform: translate(0, 1.5px) scale(0.75) !important;
+}
+.MuiInput-underline::after,
+.MuiInput-underline::before {
+	display: none !important;
+}
 header {
 	display: grid;
 }
@@ -406,6 +420,7 @@ header {
 	margin: 1rem 0;
 }
 .counter {
+	--bg: #00000011;
 	display: grid;
 	grid-template: 1fr 1fr / 1fr 1fr;
 	justify-content: start;
@@ -413,12 +428,20 @@ header {
 	place-items: start;
 	width: min-content;
 	height: min-content;
+	background-color: var(--bg);
+	border-radius: var(--border-radius);
+	overflow: hidden;
 }
 .counter input {
 	grid-column-start: 1;
 	grid-row: -1 / 1;
-	width: 3rem;
-	height: 3rem;
+	padding: 2rem 0;
+	text-indent: 1rem;
+	display: grid;
+	place-items: center;
+	outline: none;
+	border: none;
+	background-color: transparent;
 }
 .counter input {
 	width: 3rem;
@@ -426,6 +449,10 @@ header {
 }
 .counter button {
 	width: 3rem;
+	height: 100%;
+	outline: none;
+	border: none;
+	background-color: rgba(0, 0, 0, 0.165);
 }
 
 .places {
