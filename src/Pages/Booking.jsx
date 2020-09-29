@@ -38,6 +38,10 @@ export default function Booking() {
 				alert("Error!");
 			});
 	};
+
+	const handleDateChange = (date) => {
+		setSelectedDate(date);
+	};
 	return (
 		<div className="container container--booking">
 			<p>reservation</p>
