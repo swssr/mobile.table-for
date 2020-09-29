@@ -194,14 +194,14 @@ export default function Booking() {
 			</section>
 			<details>
 				<summary>
-					<p>Anyhing you want to know before you come.</p>
+					<p>Anyhing you want us to know before you come in.</p>
 				</summary>
 				<textarea
 					className="input textarea"
 					onChange={(e) =>
 						dispatch({ type: SET_SPECIAL_NOTE, payload: e.target.value })
 					}
-					placeholder="I like potatoes"
+					placeholder="Type on!"
 				></textarea>
 			</details>
 			<button
