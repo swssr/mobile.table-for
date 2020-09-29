@@ -22,7 +22,7 @@ export default function Booking() {
 	const history = useHistory();
 	const { state: restaurant } = useLocation();
 
-	const [selectedDate, setSelectedDate] = useState(new Date());
+	const [date, setSelectedDate] = useState(new Date());
 
 	const [state, dispatch] = useReducer(BookingReducer, {
 		date: new Date(),
@@ -34,6 +34,7 @@ export default function Booking() {
 		return await PostData("/booking", {
 			...state,
 			restaurantId: restaurant._id,
+			date,
 		})
 			.then(() => history.push("/reserved"))
 			.catch((err) => {
@@ -42,8 +43,14 @@ export default function Booking() {
 			});
 	};
 
-	const handleDateChange = (date) => {
-		setSelectedDate(date);
+	const handleDateChange = (ev) => {
+		if (
+			new Date(ev.target.value) <
+			DateTime.local().plus({ minutes: 30 }).toJSDate()
+		) {
+			return;
+		}
+		setSelectedDate(new Date(ev.target.value));
 	};
 	return (
 		<div className="container container--booking">
@@ -88,8 +95,10 @@ export default function Booking() {
 					id="date"
 					label="What day?"
 					type="date"
-					defaultValue={DateTime.local().toLocaleString(DateTime.DATE_MED)}
+					defaultValue={DateTime.local().toFormat("yyyy-MM-dd")}
 					placeholder={DateTime.local().toLocaleString(DateTime.DATE_MED)}
+					min={DateTime.local().plus({ minutes: 30 })}
+					onChange={handleDateChange}
 					variant="standard"
 					InputLabelProps={{
 						shrink: true,
@@ -103,6 +112,7 @@ export default function Booking() {
 					type="time"
 					defaultValue={DateTime.local().toLocaleString(DateTime.TIME_SIMPLE)}
 					placeholder={DateTime.local().toLocaleString(DateTime.TIME_SIMPLE)}
+					onChange={handleDateChange}
 					variant="standard"
 					InputLabelProps={{
 						shrink: true,
