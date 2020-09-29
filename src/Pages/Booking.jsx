@@ -180,7 +180,6 @@ export default function Booking() {
 			</section>
 			<details>
 				<summary>
-					<h3>Special Note</h3>
 					<p>Anyhing you want to know before you come.</p>
 				</summary>
 				<textarea
