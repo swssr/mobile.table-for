@@ -25,6 +25,7 @@ export default function Home() {
 		console.log({ data, error, loading });
 		set(data.restaurants);
 	}, [data]);
+
 	return (
 		<div className="page page--home">
 			<header>
