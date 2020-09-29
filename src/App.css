@@ -543,6 +543,7 @@ header {
 	align-items: start;
 	margin-top: 2rem;
 	margin-bottom: 2rem;
+	padding: 1rem;
 }
 .seats-counter-input {
 	display: grid;
