@@ -378,7 +378,6 @@ input[type="checkbox"] ~ .icon--saved {
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
-	gap: 1rem;
 }
 .form {
 	width: 100%;
