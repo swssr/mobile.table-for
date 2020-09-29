@@ -48,42 +48,37 @@ export default function Booking() {
 			<h1>{restaurant.name}</h1>
 			<p>{restaurant.rating}</p>
 			<p>{restaurant.seatsAvailable} Seats Available</p>
-			<Input label="What day" type="date">
-				<KeyboardDatePicker
-					margin="none"
-					id="date-picker-dialog"
-					value={selectedDate}
-					onChange={handleDateChange}
-					disablePast
-					KeyboardButtonProps={{
-						"aria-label": "change date",
-					}}
-					inputProps={{
-						style: {
-							height: "3.188em",
-						},
-					}}
-				/>
-			</Input>
+			{/* <KeyboardDatePicker
+				margin="none"
+				id="date-picker-dialog"
+				value={selectedDate}
+				onChange={handleDateChange}
+				disablePast
+				KeyboardButtonProps={{
+					"aria-label": "change date",
+				}}
+				inputProps={{
+					style: {
+						height: "3.188em",
+					},
+				}}
+			/> */}
 
-			<Input label="What time?">
-				<KeyboardTimePicker
-					margin="none"
-					ampm={true}
-					id="time-picker"
-					value={selectedDate}
-					onChange={handleDateChange}
-					KeyboardButtonProps={{
-						"aria-label": "change time",
-					}}
-					inputProps={{
-						style: {
-							height: "3.188em",
-							outline: "none",
-						},
-					}}
-				/>
-			</Input>
+			<KeyboardTimePicker
+				margin="none"
+				ampm={true}
+				value={selectedDate}
+				onChange={handleDateChange}
+				KeyboardButtonProps={{
+					"aria-label": "change time",
+				}}
+				inputProps={{
+					style: {
+						height: "3.188em",
+						outline: "none",
+					},
+				}}
+			/>
 
 			<section className="seats-counter-wrapper">
 				<section>
@@ -122,7 +117,7 @@ export default function Booking() {
 				</section>
 
 				<ul
-					class="circle-container"
+					className="circle-container"
 					style={{
 						"--v": `${state.seats} ${state.seats > 1 ? "people" : "person"}`,
 					}}
