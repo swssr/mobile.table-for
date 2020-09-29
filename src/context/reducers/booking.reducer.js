@@ -12,7 +12,7 @@ export function BookingReducer(state, action) {
 			if (state.seats + 1 > MAX_SEATS) return state;
 			return { ...state, seats: state.seats + 1 };
 		case REMOVE_PERSON:
-			if (state.seats - 1 < MIN_SEATS) return state;
+			if (state.seats - 1 < MIN_SEATS || state.seats === 1) return state;
 			return { ...state, seats: state.seats - 1 };
 		case SET_PERSONS:
 			if (state.seats - 1 < MIN_SEATS || state.seats + 1 > MAX_SEATS)
