@@ -5,6 +5,8 @@ import { KeyboardDatePicker, KeyboardTimePicker } from "@material-ui/pickers";
 import { PostData } from "../helpers";
 import Input from "../Components/Input";
 
+import { DateTime } from "luxon";
+
 import {
 	BookingReducer,
 	ADD_PERSON,
@@ -86,7 +88,8 @@ export default function Booking() {
 					id="date"
 					label="What day?"
 					type="date"
-					defaultValue="2017-05-24"
+					defaultValue={DateTime.local().toLocaleString(DateTime.DATE_MED)}
+					placeholder={DateTime.local().toLocaleString(DateTime.DATE_MED)}
 					variant="standard"
 					InputLabelProps={{
 						shrink: true,
@@ -98,7 +101,8 @@ export default function Booking() {
 					id="date"
 					label="What Time?"
 					type="time"
-					defaultValue="2017-05-24"
+					defaultValue={DateTime.local().toLocaleString(DateTime.TIME_SIMPLE)}
+					placeholder={DateTime.local().toLocaleString(DateTime.TIME_SIMPLE)}
 					variant="standard"
 					InputLabelProps={{
 						shrink: true,
