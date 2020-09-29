@@ -23,7 +23,7 @@ export default function Booking() {
 
 	const [state, dispatch] = useReducer(BookingReducer, {
 		date: new Date(),
-		seats: 0,
+		seats: 1,
 		specialNote: null,
 	});
 
@@ -64,10 +64,10 @@ export default function Booking() {
 				}}
 			/> */}
 
-			<KeyboardTimePicker
+			{/* <KeyboardTimePicker
 				margin="none"
 				ampm={true}
-				value={selectedDate}
+				value={selectedDate.toTimeString()}
 				onChange={handleDateChange}
 				KeyboardButtonProps={{
 					"aria-label": "change time",
@@ -78,11 +78,13 @@ export default function Booking() {
 						outline: "none",
 					},
 				}}
-			/>
+			/> */}
 
 			<section className="seats-counter-wrapper">
 				<section>
-					<label>How many people are you with</label>
+					<label>
+						TABLE<strong>FOR</strong> how of you?
+					</label>
 					<div
 						title={
 							!restaurant.seatsAvailable
@@ -145,6 +147,9 @@ export default function Booking() {
 								/>
 							</label>
 						))}
+					<span className="counter-display">
+						{state.seats} {state.seats === 1 ? "Person" : "People"}
+					</span>
 				</ul>
 			</section>
 			<details>

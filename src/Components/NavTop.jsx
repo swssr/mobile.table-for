@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useThemeDispatch } from "../context";
 import { TOGGLE_SIDEBAR } from "../context/reducers";
+import RandomImage from "./RandomImage";
 
 export default function NavTop(props) {
 	const themeDispatch = useThemeDispatch();
@@ -20,7 +21,7 @@ export default function NavTop(props) {
 						/>
 					</button>
 					<Link to="/">
-						<img src="" alt="" className="img img--thumb" />
+						<RandomImage className="img img--thumb" />
 					</Link>
 				</>
 			)}
