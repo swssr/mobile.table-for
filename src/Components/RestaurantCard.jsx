@@ -32,12 +32,12 @@ export default function RestaurantCard(props) {
 					<div>
 						<h3>{name}</h3>
 						<span className="rating">
-							<span className="num-reviews">
+							{/* <span className="num-reviews">
 								{Math.ceil(2 + Math.random() * 100)}
 							</span>
 							<strong className="score">
 								{(Math.random() * 5).toFixed(1)}
-							</strong>
+							</strong> */}
 							<i class="fas fa-star"></i>
 						</span>
 					</div>
