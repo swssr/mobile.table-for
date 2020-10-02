@@ -8,11 +8,10 @@ import { fetcher } from "../helpers";
 import useSWR from "swr";
 
 export default function Nearby() {
-	
 	const [coord, setCoord] = useState();
-	
+
 	const [pos, error] = useGeoLocation();
-	
+
 	const [restaurants, setRest] = useState([]);
 	const { data, loading } = useSWR("/restaurant/list", fetcher);
 	useEffect(() => data && setRest(data.restaurants), [data]);
@@ -28,13 +27,7 @@ export default function Nearby() {
           bootstrapURLKeys={{ key: "AIzaSyDNHKQef6oDl_NCAQyBg6-7RT5spD-h_3U" }}
           center={pos}
         /> */}
-				<iframe
-					title="map"
-					frameborder="0"
-					// style="border:0"
-					src="https://www.google.com/maps/embed/v1/place?q=durban&key=AIzaSyAysy8EdONqEynAfNCBtw3INDkvkEdOLuI"
-					allowfullscreen
-				></iframe>
+				Coming Soon
 			</div>
 			<div className="places">
 				<h2>Nearby Places</h2>

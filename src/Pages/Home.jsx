@@ -8,13 +8,13 @@ import { useAuthState } from "../context";
 
 export default function Home() {
 	const { data, error, loading } = useSWR("/restaurant/list", baseFetcher);
-	const { data: profile } = useSWR("/auth/profile", fetcher);
 	const [filtered, setFiltered] = useState();
 
 	const { user } = useAuthState();
 	const [arr, set] = useState([]);
 
 	//Onload
+	const { data: profile } = useSWR("/auth/profile", fetcher);
 	useEffect(() => {
 		console.log({ profile });
 	}, [profile]);

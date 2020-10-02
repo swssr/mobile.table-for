@@ -39,7 +39,7 @@ export default function Booking() {
 			.then(() => history.push("/reserved"))
 			.catch((err) => {
 				console.log(err);
-				alert("Error!");
+				alert("Please login first!");
 			});
 	};
 

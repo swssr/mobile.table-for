@@ -28,14 +28,18 @@ export default function SearchForm({
 	};
 
 	return (
-		<form className="form form--inline" onSubmit={handleSearch}>
+		<form
+			className="form form--inline"
+			onSubmit={() => alert("Feature coming soon.")}
+		>
 			<div className="input-wrapper">
 				<input
 					onChange={(ev) => setQuery(ev.target.value)}
 					type="search"
 					autoComplete
 					className="input"
-					placeholder="Search restaurant, cuisine, or location"
+					// placeholder="Search restaurant, cuisine, or location..."
+					placeholder="Search..."
 				/>
 				<button type="submit" className="btn btn--primary">
 					<img src={SearchIcon} className="icon icon--search" />

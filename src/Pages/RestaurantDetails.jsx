@@ -20,8 +20,8 @@ export default function RestaurantDetails() {
 				<h1>{state.name}</h1>
 				<p>now open</p>
 				<p>
-					Call <strong>079 644 1784</strong> <br />
-					Email <strong>restaurant@mail.com</strong>
+					Call <strong>{state.phone}</strong> <br />
+					Email <strong>{state.emails[0]}</strong>
 				</p>
 			</header>
 			<Carousel />

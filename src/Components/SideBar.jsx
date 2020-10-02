@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Link } from "react-router-dom";
 import { useAuthState, useThemeDispatch, useThemeState } from "../context";
 import { SET_SIDEBAR } from "../context/reducers";
 
 import profile from "../assets/user.svg";
+import useSWR from "swr";
+import { fetcher } from "../helpers";
 
 export default function SideBar() {
 	const themeState = useThemeState();
 	const themeDispatch = useThemeDispatch();
 
 	const authState = useAuthState();
-	const { user } = authState;
-	console.log(user);
+
+	const { data: user } = useSWR("/auth/profile", fetcher);
+	useEffect(() => {
+		console.log({ user });
+	}, [user]);
 
 	const handleLogout = () => {};
 	return (
@@ -29,7 +34,7 @@ export default function SideBar() {
 				<br />
 				<br />
 				<br />
-				<h1>{(user && user.fullname) || "Homo Sepian"} </h1>
+				<h1>{(user && user.fullname) || "Human"} </h1>
 			</header>
 			<ul className="sidebar__items">
 				<li className="sidebar__item">
@@ -38,24 +43,7 @@ export default function SideBar() {
 						Profile
 					</Link>
 				</li>
-				<li className="sidebar__item">
-					<span className="sidebar__item-icon"></span>
-					<Link to="/register" className="link link--major">
-						Visit History
-					</Link>
-				</li>
-				<li className="sidebar__item">
-					<span className="sidebar__item-icon"></span>
-					<Link to="/register" className="link link--major">
-						Notifications
-					</Link>
-				</li>
-				<li className="sidebar__item">
-					<span className="sidebar__item-icon"></span>
-					<Link to="/register" className="link link--major">
-						Settings
-					</Link>
-				</li>
+
 				<li className="sidebar__item">
 					<span className="sidebar__item-icon"></span>
 					{!user ? (
