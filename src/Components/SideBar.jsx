@@ -39,26 +39,15 @@ export default function SideBar() {
 			<ul className="sidebar__items">
 				<li className="sidebar__item">
 					<span className="sidebar__item-icon"></span>
-					<Link to="/register" className="link link--major">
+					<Link to="/" className="link link--major">
 						Profile
 					</Link>
 				</li>
-
 				<li className="sidebar__item">
 					<span className="sidebar__item-icon"></span>
-					{!user ? (
-						<Link to="/login" className="link link--major">
-							Login
-						</Link>
-					) : (
-						<Link
-							onClick={handleLogout}
-							to="/logout"
-							className="link link--major"
-						>
-							Logouts
-						</Link>
-					)}
+					<Link to="/" className="link link--major">
+						Settings
+					</Link>
 				</li>
 				<li className="sidebar__item">
 					<span className="sidebar__item-icon"></span>
@@ -67,20 +56,26 @@ export default function SideBar() {
 					</Link>
 				</li>
 			</ul>
-			<button
-				onClick={() => {
-					if (profile) {
-						window.confirm("Confirm to logout.") &&
+			{user ? (
+				<button
+					onClick={() => {
+						if (profile) {
+							window.confirm("Confirm to logout.") &&
+								localStorage.setItem("session", "");
+						} else {
+							window.alert("Already logged out.");
 							localStorage.setItem("session", "");
-					} else {
-						window.alert("Already logged out.");
-						localStorage.setItem("session", "");
-					}
-				}}
-				className="btn btn--bottom"
-			>
-				LOGOUT
-			</button>
+						}
+					}}
+					className="btn btn--bottom"
+				>
+					LOGOUT
+				</button>
+			) : (
+				<Link to="/login" className="btn btn--bottom btn--primary">
+					LOGIN
+				</Link>
+			)}
 		</aside>
 	);
 }
