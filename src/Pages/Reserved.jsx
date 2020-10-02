@@ -15,7 +15,7 @@ export default function Reserved() {
 		if (!(rest && pro && book)) return;
 		// return console.log(book);
 		set(
-			book.bookings.map((b) => {
+			book.map((b) => {
 				const _r = rest.restaurants.find((r) => r._id == b.restaurantId);
 				return { ...b, ..._r };
 			})
