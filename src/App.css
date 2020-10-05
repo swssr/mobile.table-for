@@ -131,7 +131,6 @@ a {
   transform: translateY(20vh);
 }
 .sidebar + * {
-  transition: all 500ms ease-out;
   height: 101vw;
   height: 101vh;
   border-radius: 8px;
